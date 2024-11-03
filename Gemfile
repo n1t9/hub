@@ -11,6 +11,8 @@ gem "cssbundling-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
+gem "kaminari"
+
 group :development do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
@@ -21,4 +23,5 @@ group :development do
   gem "pry-rails"
   gem "pry-byebug"
   gem "htmlbeautifier"
+  gem "ostruct"
 end
