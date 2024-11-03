@@ -131,6 +131,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_134757) do
     t.string "language", null: false
     t.boolean "email_verified", default: false, null: false
     t.string "session_token", null: false
+    t.integer "followings_count", default: 0, null: false
+    t.integer "bookmarks_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

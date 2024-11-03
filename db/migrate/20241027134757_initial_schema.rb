@@ -9,6 +9,8 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.string :language, null: false
       t.boolean :email_verified, null: false, default: false
       t.string :session_token, null: false
+      t.integer :followings_count, null: false, default: 0
+      t.integer :bookmarks_count, null: false, default: 0
       t.timestamps
     end
     add_index :users, :email, unique: true
