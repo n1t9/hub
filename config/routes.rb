@@ -4,5 +4,11 @@ Rails.application.routes.draw do
   get "manifest", to: "rails/pwa#manifest", as: :rails_pwa_manifest
 
   root to: "home#index"
+
+  resource :signup, only: %i[show create]
+  resource :signin, only: %i[show create]
+  resource :signout, only: %i[create]
+  resource :terms, only: %i[show]
+
   resources :categories, only: %i[show]
 end

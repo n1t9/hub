@@ -1,0 +1,22 @@
+<% content_for :title, "ログイン" %>
+<div class="container mx-auto px-4 md:px-0 py-3">
+  <%= form_with model: @user, url: signin_path, local: true, class: "grid grid-cols-1 gap-5" do |f| %>
+    <div>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: "w-full bg-gray-100 rounded border p-1", required: true %>
+    </div>
+    <div>
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: "w-full bg-gray-100 rounded border p-1", required: true %>
+    </div>
+    <div>
+      <%= f.submit "ログインする", class: "w-full bg-blue-600 text-white py-2" %>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to "パスワードを忘れた場合", root_path, class: "text-blue underline" %>
+  </div>
+  <div>
+    <%= link_to "会員登録はこちら", signup_path, class: "text-blue cursor-pointer underline" %>
+  </div>
+</div>

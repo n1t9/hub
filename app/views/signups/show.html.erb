@@ -1,0 +1,26 @@
+<% content_for :title, "会員登録" %>
+<div class="container mx-auto px-4 md:px-0 py-3">
+  <%= form_with model: @user, url: signup_path, local: true, class: "grid grid-cols-1 gap-5", data: { controller: "signup" } do |f| %>
+    <div>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: "w-full bg-gray-100 rounded border p-1", data: { action: "blur->signup#validateEmail", signup_target: "email" } %>
+      <div data-signup-target="emailError" class="text-sm text-red-500 hidden">有効なメールアドレスを入力してください。</div>
+    </div>
+    <div>
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: "w-full bg-gray-100 rounded border p-1", data: { action: "blur->signup#validatePassword", signup_target: "password" } %>
+      <div data-signup-target="passwordError" class="text-sm text-red-500 hidden">パスワードは8文字以上で、英字と、数字または記号を組み合わせてください。</div>
+    </div>
+    <div>
+      <span class="text-sm">
+        会員登録には <a href="<%= terms_path %>" target="_blank" class="text-blue-500">利用規約</a> への同意が必要です。
+      </span>
+    </div>
+    <div>
+      <%= f.submit "同意して登録する", class: "w-full bg-gray-300 py-2", data: { signup_target: "submit" }, disabled: true %>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to "ログインはこちら", signin_path, class: "text-blue underline" %>
+  </div>
+</div>

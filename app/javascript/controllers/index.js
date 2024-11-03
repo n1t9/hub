@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
+
+import SignupController from "./signup_controller"
+application.register("signup", SignupController)
