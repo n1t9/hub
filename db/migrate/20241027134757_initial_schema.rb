@@ -6,7 +6,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.string :password_digest, null: false
       t.string :profile_image, null: false
       t.text :bio, null: false
-      t.integer :prefecture, null: false
       t.string :language, null: false
       t.boolean :email_verified, null: false, default: false
       t.string :session_token, null: false
@@ -15,13 +14,17 @@ class InitialSchema < ActiveRecord::Migration[7.2]
     add_index :users, :email, unique: true
     add_index :users, :session_token, unique: true
 
-    create_table :keywords do |t|
-      t.integer :category, null: false
+    create_table :categories do |t|
       t.string :name, null: false
-      t.integer :priority, null: false
       t.timestamps
     end
-    add_index :keywords, :category
+
+    create_table :keywords do |t|
+      t.references :category, null: false, foreign_key: true
+      t.string :name, null: false
+      t.integer :sequence, null: false
+      t.timestamps
+    end
 
     create_table :pages do |t|
       t.integer :genre, null: false
@@ -30,9 +33,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.string :profile_image, null: false
       t.boolean :is_verified, null: false, default: false
       t.text :bio, null: false
-      t.integer :prefecture, null: false
-      t.string :location, null: false
-      t.integer :priority, null: false
       t.integer :posts_count, null: false, default: 0
       t.integer :reviews_count, null: false, default: 0
       t.timestamps
@@ -42,7 +42,7 @@ class InitialSchema < ActiveRecord::Migration[7.2]
     create_table :page_keywords do |t|
       t.references :page, null: false, foreign_key: true
       t.references :keyword, null: false, foreign_key: true
-      t.integer :priority, null: false
+      t.integer :sequence, null: false
       t.timestamps
     end
 

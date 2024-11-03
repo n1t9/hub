@@ -14,13 +14,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_134757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "keywords", force: :cascade do |t|
-    t.integer "category", null: false
+  create_table "categories", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "priority", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category"], name: "index_keywords_on_category"
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.string "name", null: false
+    t.integer "sequence", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_keywords_on_category_id"
   end
 
   create_table "official_post_bookmarks", force: :cascade do |t|
@@ -53,7 +59,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_134757) do
   create_table "page_keywords", force: :cascade do |t|
     t.bigint "page_id", null: false
     t.bigint "keyword_id", null: false
-    t.integer "priority", null: false
+    t.integer "sequence", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["keyword_id"], name: "index_page_keywords_on_keyword_id"
@@ -109,9 +115,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_134757) do
     t.string "profile_image", null: false
     t.boolean "is_verified", default: false, null: false
     t.text "bio", null: false
-    t.integer "prefecture", null: false
-    t.string "location", null: false
-    t.integer "priority", null: false
     t.integer "posts_count", default: 0, null: false
     t.integer "reviews_count", default: 0, null: false
     t.datetime "created_at", null: false
@@ -125,7 +128,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_134757) do
     t.string "password_digest", null: false
     t.string "profile_image", null: false
     t.text "bio", null: false
-    t.integer "prefecture", null: false
     t.string "language", null: false
     t.boolean "email_verified", default: false, null: false
     t.string "session_token", null: false
@@ -135,6 +137,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_134757) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  add_foreign_key "keywords", "categories"
   add_foreign_key "official_post_bookmarks", "official_posts"
   add_foreign_key "official_post_bookmarks", "users"
   add_foreign_key "page_followers", "pages"
