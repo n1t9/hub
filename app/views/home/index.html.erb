@@ -1,1 +1,84 @@
-Home
+<h2 class="text-lg font-bold">もふもふさん、おかえりなさい</h2>
+
+<div class="w-full">
+  <div class="my-2 px-5 py-2 border rounded-lg">
+    <%= link_to category_path(1) do %>
+      <div class="flex items-center space-x-4">
+        <div>
+          <i class="fa-solid fa-heart text-xl"></i>
+        </div>
+        <div>
+          <h5 class="text-xl font-bold tracking-tight">はったつ</h5>
+          <p class="text-xs text-gray-700">LD、ADHD、ASD、子供、大人</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="my-2 px-5 py-2 border rounded-lg">
+    <%= link_to category_path(2) do %>
+      <div class="flex items-center space-x-4">
+        <div>
+          <i class="fa-solid fa-heart text-xl"></i>
+        </div>
+        <div>
+          <h5 class="text-xl font-bold tracking-tight">せいしん</h5>
+          <p class="text-xs text-gray-700">統合失調症、うつ病、双極性、睡眠、高次脳機能、知的</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="flex space-x-2 my-2">
+    <div class="border rounded-lg px-5 py-2">
+      <%= link_to category_path(3) do %>
+        <div class="flex items-center space-x-4">
+          <div>
+            <i class="fa-solid fa-heart text-xl"></i>
+          </div>
+          <div>
+            <h5 class="text-xl font-bold tracking-tight">め</h5>
+            <p class="text-xs text-gray-700">盲、弱視、先天性、中途</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="border rounded-lg px-5 py-2">
+      <%= link_to category_path(4) do %>
+        <div class="flex items-center space-x-4">
+          <div>
+            <i class="fa-solid fa-heart text-xl"></i>
+          </div>
+          <div>
+            <h5 class="text-xl font-bold tracking-tight">みみ</h5>
+            <p class="text-xs text-gray-700">聾、難聴、先天性、中途</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="my-2 px-5 py-2 border rounded-lg">
+    <%= link_to category_path(5) do %>
+      <div class="flex items-center space-x-4">
+        <div>
+          <i class="fa-solid fa-heart text-xl"></i>
+        </div>
+        <div>
+          <h5 class="text-xl font-bold tracking-tight">てあし</h5>
+          <p class="text-xs text-gray-700">上肢、下肢</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="my-2 px-5 py-2 border rounded-lg">
+    <%= link_to category_path(6) do %>
+      <div class="flex items-center space-x-4">
+        <div>
+          <i class="fa-solid fa-heart text-xl"></i>
+        </div>
+        <div>
+          <h5 class="text-xl font-bold tracking-tight">ないぶ</h5>
+          <p class="text-xs text-gray-700">心疾患、アラジール症候群、ALS/SMA、声帯摘出、慢性疲労症候群</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "manifest", to: "rails/pwa#manifest", as: :rails_pwa_manifest
 
   root to: "home#index"
+  resources :categories, only: %i[show]
 end

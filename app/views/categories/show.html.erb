@@ -1,0 +1,32 @@
+<nav class="flex" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <li class="inline-flex items-center">
+      <%= link_to root_path, class: "inline-flex items-center text-sm underline" do %>
+        トップ
+      <% end %>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+        <span class="ms-1 text-lg font-medium md:ms-2"><%= @category.name %></span>
+      </div>
+    </li>
+  </ol>
+</nav>
+
+<ul class="my-1 flex flex-wrap">
+  <% @keywords.each do |keyword| %>
+    <li class="mr-1.5 mt-2">
+      <div class="flex items-center rounded bg-gray-200 px-3 py-1 text-xs leading-5">
+        <%= keyword.name %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<h2 class="text-xl">pages</h2>
+<% @pages.each do |page| %>
+  <%= page.name %>
+<% end %>
