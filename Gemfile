@@ -11,6 +11,7 @@ gem "cssbundling-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
+gem "bcrypt"
 gem "kaminari"
 
 group :development do
