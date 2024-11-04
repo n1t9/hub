@@ -1,8 +1,9 @@
 ja:
   flash:
-    signin: "ログインしました"
-    signin_failed: "ログインに失敗しました"
-    signout: "ログアウトしました"
+    signin: ログインしました
+    signin_failed: ログインに失敗しました
+    signout: ログアウトしました
+    setup: 会員登録が完了しました
   activerecord:
     errors:
       format: "%{attribute}%{message}"
@@ -37,9 +38,14 @@ ja:
       header: "%{model}に%{count}個のエラーが発生しました"
     attributes:
       user:
+        name: 表示されるお名前
         email: メールアドレス
         password: パスワード
+        background: ご登録の背景
   helpers:
+    home:
+      welcome: '%{name}さん、こんにちは'
+      welcome_guest: 'Inclusive Hubへようこそ'
     signin:
       title: ログイン
       submit: ログインする
@@ -57,3 +63,7 @@ ja:
       submit: ログアウトする
     terms:
       title: 利用規約
+    setup:
+      title: 初期設定
+      background_detail: バックグラウンド等をご記入ください、例）○○障害の当事者、家族、研究開発者など
+      submit: 登録する

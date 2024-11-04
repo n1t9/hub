@@ -128,6 +128,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_134757) do
     t.string "password_digest", null: false
     t.string "profile_image", null: false
     t.text "bio", null: false
+    t.text "background", null: false
     t.string "language", null: false
     t.boolean "email_verified", default: false, null: false
     t.string "session_token", null: false

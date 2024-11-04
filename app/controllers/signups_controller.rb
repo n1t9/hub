@@ -12,7 +12,7 @@ class SignupsController < ApplicationController
     if @user.save
       create_session(@user)
       @user.send_verification_email
-      redirect_to root_path
+      redirect_to signup_setup_path
     else
       flash[:error] = @user.errors.full_messages.join(", ")
       render :show, status: :unprocessable_entity

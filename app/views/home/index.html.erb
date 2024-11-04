@@ -1,5 +1,10 @@
-<h2 class="text-lg font-bold">もふもふさん、おかえりなさい</h2>
-
+<h2 class="text-xl font-bold mt-2 mb-4">
+  <% if current_user %>
+    <%= t("helpers.home.welcome", name: current_user.name) %>
+  <% else %>
+    <%= t("helpers.home.welcome_guest") %>
+  <% end %>
+</h2>
 <div class="w-full">
   <div class="my-2 px-5 py-2 border rounded-lg">
     <%= link_to category_path(1) do %>

@@ -5,10 +5,17 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resource :signup, only: %i[show create]
+  resource :signup, only: %i[show create] do
+    scope module: :signups do
+      resource :setup, only: %i[show create]
+    end
+  end
   resource :signin, only: %i[show create]
   resource :signout, only: %i[create]
   resource :terms, only: %i[show]
 
   resources :categories, only: %i[show]
+  resources :users, only: %i[show]
+  resources :following_pages, only: %i[index]
+  resources :bookmarks, only: %i[index create destroy]
 end

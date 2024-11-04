@@ -1,0 +1,19 @@
+<% content_for :title, t("helpers.setup.title") %>
+<% content_for :skip_header, true %>
+<div class="container mx-auto px-4 md:px-0 py-3">
+  <h2 class="text-lg font-bold my-8">アカウントのセットアップ</h2>
+  <%= form_with model: current_user, url: signup_setup_path, method: :post, local: true, class: "grid grid-cols-1 gap-5" do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "w-full bg-gray-100 rounded border p-1", required: true, maxlength: 20 %>
+    </div>
+    <div>
+      <%= f.label :background, class: "block" %>
+      <span class="text-sm text-gray-500"><%= t("helpers.setup.background_detail") %></span>
+      <%= f.text_field :background, class: "w-full bg-gray-100 rounded border p-1", required: true, maxlength: 100 %>
+    </div>
+    <div>
+      <%= f.submit t("helpers.setup.submit"), class: "w-full bg-blue-500 text-white font-bold py-2 px-4 rounded text-center" %>
+    </div>
+  <% end %>
+</div>

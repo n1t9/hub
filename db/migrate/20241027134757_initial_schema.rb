@@ -6,6 +6,7 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.string :password_digest, null: false
       t.string :profile_image, null: false
       t.text :bio, null: false
+      t.text :background, null: false
       t.string :language, null: false
       t.boolean :email_verified, null: false, default: false
       t.string :session_token, null: false
