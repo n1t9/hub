@@ -11,9 +11,10 @@ class SigninsController < ApplicationController
     @user = User.find_by(email: login_params[:email])
     if @user&.authenticate(login_params[:password])
       create_session(@user)
+      flash[:success] = t("flash.signin")
       redirect_to root_path
     else
-      render :show, status: :unprocessable_entity, alert: "There was an error logging in."
+      render :show, status: :unprocessable_entity
     end
   end
 
