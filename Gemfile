@@ -15,6 +15,8 @@ gem "image_processing", "~> 1.13"
 gem "bcrypt"
 gem "kaminari"
 
+gem "aws-sdk-s3", require: false
+
 group :development do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
