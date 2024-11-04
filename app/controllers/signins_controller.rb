@@ -14,6 +14,7 @@ class SigninsController < ApplicationController
       flash[:success] = t("flash.signin")
       redirect_to root_path
     else
+      flash[:error] = t("flash.signin_failed")
       render :show, status: :unprocessable_entity
     end
   end

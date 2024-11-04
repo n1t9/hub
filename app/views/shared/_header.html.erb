@@ -3,16 +3,18 @@
     <%= link_to root_path, class: "flex title-font font-medium items-center text-gray-900" do %>
       <span class="text-xl">Inclusive Hub</span>
     <% end %>
-    <nav class="ml-auto flex flex-wrap items-center text-base justify-center">
-      <div class="flex">
-        <button data-action="click->menu#toggle" class="flex flex-col items-center text-center">
-          <span class="material-icons-outlined">
-            menu
-          </span>
-          <span class="text-xs font-medium">メニュー</span>
-        </button>
-      </div>
-    </nav>
-    <%= render "shared/menu" %>
+    <% unless content_for?(:skip_menu) %>
+      <nav class="ml-auto flex flex-wrap items-center text-base justify-center">
+        <div class="flex">
+          <button data-action="click->menu#toggle" class="flex flex-col items-center text-center">
+            <span class="material-icons-outlined">
+              menu
+            </span>
+            <span class="text-xs font-medium">メニュー</span>
+          </button>
+        </div>
+      </nav>
+      <%= render "shared/menu" %>
+    <% end %>
   </div>
 </header>

@@ -14,7 +14,8 @@ class SignupsController < ApplicationController
       @user.send_verification_email
       redirect_to root_path
     else
-      render :show, status: :unprocessable_entity, alert: "There was an error creating your account."
+      flash[:error] = @user.errors.full_messages.join(", ")
+      render :show, status: :unprocessable_entity
     end
   end
 
