@@ -12,22 +12,30 @@
     <% if current_user %>
       <div class="py-2">
         <%= link_to user_path(current_user.id) do %>
-          <div class="flex items-center space-x-4">
-            <div>
+          <div class="flex items-center">
+            <div class="mr-4">
               <img src="https://i1.wp.com/cornellsun.com/wp-content/uploads/2020/06/1591119073-screen_shot_2020-06-02_at_10.30.13_am.png" alt="face" class="w-8 h-8">
             </div>
             <div>
               <h5 class="text-xl font-bold tracking-tight"><%= current_user.name %></h5>
               <p class="text-xs text-gray-700">プロフィールを見る</p>
             </div>
+            <div class="justify-end ml-auto items-center">
+              <span class="material-icons-outlined">
+                chevron_right
+              </span>
+            </div>
           </div>
-          <hr class="my-4">
+          <hr class="mt-4 mb-10">
           <div>
-            <h4 class="text-md font-bold tracking-tight">記事</h4>
-            <a href="#" class="block text-gray-700 mt-2 ml-4">ブックマークした記事</a>
+            <a href="#" class="block text-gray-700 mt-2">フォロー中ページ</a>
             <hr class="my-4">
-            <%= button_to "ログアウト", signout_path, method: :post, class: "w-full text-gray-700 text-left" %>
+            <a href="#" class="block text-gray-700 mt-2">ブックマークしたポスト</a>
             <hr class="my-4">
+            <a href="#" class="block text-gray-700 mt-2">設定</a>
+            <hr class="my-4">
+            <%= button_to "ログアウト", signout_path, method: :post, class: "w-full text-gray-700 rounded border py-2" %>
+            <%= render "shared/feedback" %>
           </div>
         <% end %>
       </div>
@@ -44,6 +52,7 @@
             <%= t("helpers.signin.title") %>
           <% end %>
         </div>
+        <%= render "shared/feedback" %>
       </div>
     <% end %>
   </div>
