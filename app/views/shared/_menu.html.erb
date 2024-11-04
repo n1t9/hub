@@ -1,3 +1,4 @@
+<div data-menu-target="menubg" class="hidden fixed inset-0 bg-black opacity-25 z-40"></div>
 <div data-menu-target="menu" class="fixed inset-y-0 right-0 w-5/6 md:w-1/2 lg:w-1/3 bg-white shadow-lg px-4 py-3 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
   <div class="flex justify-end">
     <button data-action="click->menu#close" class="flex flex-col items-center text-center">
@@ -7,7 +8,7 @@
       <span class="text-xs font-medium">とじる</span>
     </button>
   </div>
-  <div class="mt-8 max-w-sm mx-auto"> 
+  <div class="mt-8 max-w-sm mx-auto">
     <% if current_user %>
       <div class="py-2">
         <%= link_to user_path(current_user.id) do %>
@@ -32,13 +33,15 @@
       </div>
     <% else %>
       <div class="py-2">
-        <p class="text-lg text-center">ログインまたは新規登録してください</p>
+        <h4 class="text-xl text-center my-4">もっと見るには、<br>
+          ログインが必要です</h4>
+        <p class="text-md text-center my-2">ログインまたは会員登録してください。</p>
         <div class="flex-row flex space-x-2 mt-8">
-          <%= link_to signin_path, class: "flex-1 border font-bold py-2 px-4 rounded text-center" do %>
-            ログイン
-          <% end %>
           <%= link_to signup_path, class: "flex-1 bg-blue-500 text-white font-bold py-2 px-4 rounded text-center" do %>
-            会員登録
+            <%= t("helpers.signup.title") %>
+          <% end %>
+          <%= link_to signin_path, class: "flex-1 border font-bold py-2 px-4 rounded text-center" do %>
+            <%= t("helpers.signin.title") %>
           <% end %>
         </div>
       </div>
