@@ -70,7 +70,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.integer "status", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.string "cover_image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -109,7 +108,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.integer "status", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.string "cover_image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["page_id"], name: "index_page_posts_on_page_id"
@@ -140,7 +138,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.integer "genre", null: false
     t.string "name", null: false
     t.integer "status", null: false
-    t.string "profile_image", null: false
     t.boolean "is_verified", default: false, null: false
     t.text "bio", null: false
     t.integer "posts_count", default: 0, null: false
@@ -154,7 +151,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.string "profile_image", null: false
     t.text "bio", null: false
     t.text "background", null: false
     t.string "language", null: false

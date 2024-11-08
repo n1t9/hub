@@ -4,7 +4,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.string :name, null: false
       t.string :email, null: false
       t.string :password_digest, null: false
-      t.string :profile_image, null: false
       t.text :bio, null: false
       t.text :background, null: false
       t.string :language, null: false
@@ -33,7 +32,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.integer :genre, null: false
       t.string :name, null: false
       t.integer :status, null: false
-      t.string :profile_image, null: false
       t.boolean :is_verified, null: false, default: false
       t.text :bio, null: false
       t.integer :posts_count, null: false, default: 0
@@ -75,7 +73,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.integer :status, null: false
       t.string :title, null: false
       t.text :content, null: false
-      t.string :cover_image, null: false
       t.timestamps
     end
 
@@ -89,7 +86,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.integer :status, null: false
       t.string :title, null: false
       t.text :content, null: false
-      t.string :cover_image, null: false
       t.timestamps
     end
 

@@ -1,4 +1,9 @@
+return if Rails.env.production?
+
+Page.delete_all
+Keyword.delete_all
 Category.delete_all
+
 [
   { id: 1, name: "はったつ" },
   { id: 2, name: "せいしん" },
@@ -10,7 +15,6 @@ Category.delete_all
   Category.create(id: category[:id], name: category[:name])
 end
 
-Keyword.delete_all
 [
   { id: 1, name: "LD", category_id: 1, sequence: 1 },
   { id: 2, name: "ADHD", category_id: 1, sequence: 2 },
@@ -42,14 +46,12 @@ Keyword.delete_all
   Keyword.create(id: keyword[:id], name: keyword[:name], category_id: keyword[:category_id], sequence: keyword[:sequence])
 end
 
-Page.delete_all
 [
   {
     id: 1,
     genre: 1,
     name: "NPO法人みのり",
     status: 1,
-    profile_image: "https://ageo-minori.or.jp/wp/wp-content/uploads/2019/11/S__5447682.jpg",
     is_verified: true,
     bio: "はじめまして。「領家グリーンゲイブルズ」施設長の加藤木貢児です。「盲学校卒業後の子どもたちの生活が、”みのり”あるものになることを願って」そんな想いで、2013年5月、盲学校の保護者達によってつくられたみのり。",
     posts_count: 2,
@@ -62,7 +64,6 @@ Page.delete_all
     genre: page[:genre],
     name: page[:name],
     status: page[:status],
-    profile_image: page[:profile_image],
     is_verified: page[:is_verified],
     bio: page[:bio],
     posts_count: page[:posts_count],
