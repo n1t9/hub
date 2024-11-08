@@ -2,7 +2,7 @@
   <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
     <li class="inline-flex items-center">
       <%= link_to root_path, class: "inline-flex items-center text-sm underline" do %>
-        トップ
+        <%= t('helpers.top') %>
       <% end %>
     </li>
     <li aria-current="page">
@@ -15,7 +15,6 @@
     </li>
   </ol>
 </nav>
-
 <ul class="my-1 flex flex-wrap">
   <% @keywords.each do |keyword| %>
     <li class="mr-1.5 mt-2">
@@ -25,7 +24,6 @@
     </li>
   <% end %>
 </ul>
-
 <h2 class="text-xl">pages</h2>
 <% @pages.each do |page| %>
   <%= page.name %>

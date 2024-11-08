@@ -5,7 +5,7 @@ class Signups::SetupsController < ApplicationController
 
   def create
     if current_user.update(setup_params)
-      flash[:info] = t("flash.setup")
+      flash[:success] = t("flash.setup")
       redirect_to root_path
     else
       flash[:error] = current_user.errors.full_messages.join(", ")

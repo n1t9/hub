@@ -1,5 +1,7 @@
 ja:
   flash:
+    update: 更新しました
+    update_failed: 更新に失敗しました
     signin: ログインしました
     signin_failed: ログインに失敗しました
     signout: ログアウトしました
@@ -41,8 +43,13 @@ ja:
         name: 表示されるお名前
         email: メールアドレス
         password: パスワード
-        background: ご登録の背景
+        background: ご登録の背景(公開されません)
+        bio: 自己紹介文
   helpers:
+    submit:
+      create: 登録する
+      update: 更新する
+    top: トップ
     home:
       welcome: '%{name}さん、こんにちは'
       welcome_guest: 'Inclusive Hubへようこそ'
@@ -67,3 +74,8 @@ ja:
       title: 初期設定
       background_detail: バックグラウンド等をご記入ください、例）○○障害の当事者、家族、研究開発者など
       submit: 登録する
+    setting:
+      title: 設定
+      change_image: 画像を変更する
+      email_verified: メールアドレスは確認済みです。
+      email_not_verified: メールアドレスは未確認です。

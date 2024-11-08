@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= "Inclusive Hub | #{content_for(:title)}" || "Inclusive Hub" %></title>
+    <title><%= content_for(:title) ? "#{content_for(:title)} - Inclusive Hub" : "Inclusive Hub" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -18,13 +16,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
-
   <body>
     <%= render "shared/header" unless content_for?(:skip_header) %>
     <div class="container mx-auto px-4 py-3 max-w-screen-lg">
       <%= yield %>
     </div>
-
     <%= render "shared/toast" if flash.any? %>
   </body>
 </html>

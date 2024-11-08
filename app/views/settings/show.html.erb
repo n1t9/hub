@@ -1,0 +1,28 @@
+<%= content_for :title, t("helpers.setting.title") %>
+<div class="my-6">
+  <span class="block text-gray-700 font-bold mb-2">プロフィール画像</span>
+  <%= image_tag current_user.display_profile_image, class: "w-24 h-24 rounded-full my-4 object-cover" %>
+  <%= link_to t("helpers.setting.change_image"), settings_profile_image_path, class: "border py-2 px-4 rounded text-center" %>
+</div>
+<%= form_with model: current_user, url: settings_path, method: :put do |f| %>
+  <div class="my-4">
+    <%= f.label :name, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
+    <%= f.text_field :name, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 20 %>
+  </div>
+  <div class="my-4">
+    <%= f.label :email, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
+    <%= f.email_field :email, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight" %>
+    <span class="text-sm text-gray-500"><%= current_user.email_verified? ? t("helpers.setting.email_verified") : t("helpers.setting.email_not_verified") %></span>
+  </div>
+  <div class="my-4">
+    <%= f.label :password, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
+    <%= f.password_field :password, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight", placeholder: "********" %>
+  </div>
+  <div class="my-4">
+    <%= f.label :bio, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
+    <%= f.text_area :bio, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 160 %>
+  </div>
+  <div class="my-4">
+    <%= f.submit t("helpers.submit.update"), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+<% end %>
