@@ -7,81 +7,81 @@
 </h2>
 <div class="w-full">
   <div class="my-2 px-5 py-2 border rounded-lg">
-    <%= link_to category_path(1) do %>
+    <%= link_to category_path(@categories[0].id) do %>
       <div class="flex items-center space-x-4">
         <div>
           <i class="fa-solid fa-heart text-xl"></i>
         </div>
         <div>
-          <h5 class="text-xl font-bold tracking-tight">はったつ</h5>
-          <p class="text-xs text-gray-700">LD、ADHD、ASD、子供、大人</p>
+          <h5 class="text-xl font-bold tracking-tight"><%= @categories[0].name %></h5>
+          <p class="text-xs text-gray-700"><%= @categories[0].keywords.map(&:name).join("、") %></p>
         </div>
       </div>
     <% end %>
   </div>
   <div class="my-2 px-5 py-2 border rounded-lg">
-    <%= link_to category_path(2) do %>
+    <%= link_to category_path(@categories[1].id) do %>
       <div class="flex items-center space-x-4">
         <div>
           <i class="fa-solid fa-heart text-xl"></i>
         </div>
         <div>
-          <h5 class="text-xl font-bold tracking-tight">せいしん</h5>
-          <p class="text-xs text-gray-700">統合失調症、うつ病、双極性、睡眠、高次脳機能、知的</p>
+          <h5 class="text-xl font-bold tracking-tight"><%= @categories[1].name %></h5>
+          <p class="text-xs text-gray-700"><%= @categories[1].keywords.map(&:name).join("、") %></p>
         </div>
       </div>
     <% end %>
   </div>
   <div class="flex space-x-2 my-2">
     <div class="flex-1 border rounded-lg px-5 py-2">
-      <%= link_to category_path(3) do %>
+      <%= link_to category_path(@categories[2].id) do %>
         <div class="flex items-center space-x-4">
           <div>
             <i class="fa-solid fa-heart text-xl"></i>
           </div>
           <div>
-            <h5 class="text-xl font-bold tracking-tight">め</h5>
-            <p class="text-xs text-gray-700">盲、弱視、先天性、中途</p>
+            <h5 class="text-xl font-bold tracking-tight"><%= @categories[2].name %></h5>
+            <p class="text-xs text-gray-700"><%= @categories[2].keywords.map(&:name).join("、") %></p>
           </div>
         </div>
       <% end %>
     </div>
     <div class="flex-1 border rounded-lg px-5 py-2">
-      <%= link_to category_path(4) do %>
+      <%= link_to category_path(@categories[3].id) do %>
         <div class="flex items-center space-x-4">
           <div>
             <i class="fa-solid fa-heart text-xl"></i>
           </div>
           <div>
-            <h5 class="text-xl font-bold tracking-tight">みみ</h5>
-            <p class="text-xs text-gray-700">聾、難聴、先天性、中途</p>
+            <h5 class="text-xl font-bold tracking-tight"><%= @categories[3].name %></h5>
+            <p class="text-xs text-gray-700"><%= @categories[3].keywords.map(&:name).join("、") %></p>
           </div>
         </div>
       <% end %>
     </div>
   </div>
   <div class="my-2 px-5 py-2 border rounded-lg">
-    <%= link_to category_path(5) do %>
+    <%= link_to category_path(@categories[4].id) do %>
       <div class="flex items-center space-x-4">
         <div>
           <i class="fa-solid fa-heart text-xl"></i>
         </div>
         <div>
-          <h5 class="text-xl font-bold tracking-tight">てあし</h5>
-          <p class="text-xs text-gray-700">上肢、下肢</p>
+          <h5 class="text-xl font-bold tracking-tight"><%= @categories[4].name %></h5>
+          <p class="text-xs text-gray-700"><%= @categories[4].keywords.map(&:name).join("、") %></p>
         </div>
       </div>
     <% end %>
   </div>
   <div class="my-2 px-5 py-2 border rounded-lg">
-    <%= link_to category_path(6) do %>
+    <%= link_to category_path(@categories[5].id) do %>
       <div class="flex items-center space-x-4">
         <div>
           <i class="fa-solid fa-heart text-xl"></i>
         </div>
         <div>
-          <h5 class="text-xl font-bold tracking-tight">ないぶ</h5>
-          <p class="text-xs text-gray-700">心疾患、アラジール症候群、ALS/SMA、声帯摘出、慢性疲労症候群</p>
+          <h5 class="text-xl font-bold tracking-tight"><%= @categories[5].name %></h5>
+          <p class="text-xs text-gray-700"><%= @categories[5].keywords.map(&:name).join("、") %></p>
         </div>
       </div>
     <% end %>
