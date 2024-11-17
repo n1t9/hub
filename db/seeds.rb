@@ -5,14 +5,14 @@ Keyword.delete_all
 Category.delete_all
 
 [
-  { id: 1, name: "はったつ" },
-  { id: 2, name: "せいしん" },
-  { id: 3, name: "め" },
-  { id: 4, name: "みみ" },
-  { id: 5, name: "てあし" },
-  { id: 6, name: "ないぶ" }
+  { id: 1, name: "はったつ", icon: "icon-hattatsu.png" },
+  { id: 2, name: "せいしん", icon: "icon-seishin.png" },
+  { id: 3, name: "め", icon: "icon-me.png" },
+  { id: 4, name: "みみ", icon: "icon-mimi.png" },
+  { id: 5, name: "てあし", icon: "icon-teashi.png" },
+  { id: 6, name: "ないぶ", icon: "icon-naibu" }
 ].each do |category|
-  Category.create(id: category[:id], name: category[:name])
+  Category.create(id: category[:id], name: category[:name], icon: category[:icon])
 end
 
 [
