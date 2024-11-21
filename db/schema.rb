@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["official_post_id", "user_id"], name: "index_official_post_bookmarks_on_official_post_id_and_user_id", unique: true
     t.index ["official_post_id"], name: "index_official_post_bookmarks_on_official_post_id"
     t.index ["user_id"], name: "index_official_post_bookmarks_on_user_id"
   end
@@ -80,6 +81,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["page_id", "user_id"], name: "index_page_followers_on_page_id_and_user_id", unique: true
     t.index ["page_id"], name: "index_page_followers_on_page_id"
     t.index ["user_id"], name: "index_page_followers_on_user_id"
   end
@@ -91,6 +93,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["keyword_id"], name: "index_page_keywords_on_keyword_id"
+    t.index ["page_id", "keyword_id"], name: "index_page_keywords_on_page_id_and_keyword_id", unique: true
     t.index ["page_id"], name: "index_page_keywords_on_page_id"
   end
 
@@ -99,6 +102,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["page_post_id", "user_id"], name: "index_page_post_bookmarks_on_page_post_id_and_user_id", unique: true
     t.index ["page_post_id"], name: "index_page_post_bookmarks_on_page_post_id"
     t.index ["user_id"], name: "index_page_post_bookmarks_on_user_id"
   end
@@ -131,6 +135,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["page_id", "user_id"], name: "index_page_users_on_page_id_and_user_id", unique: true
     t.index ["page_id"], name: "index_page_users_on_page_id"
     t.index ["user_id"], name: "index_page_users_on_user_id"
   end

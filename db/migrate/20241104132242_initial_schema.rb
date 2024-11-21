@@ -47,6 +47,7 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.integer :sequence, null: false
       t.timestamps
     end
+    add_index :page_keywords, [ :page_id, :keyword_id ], unique: true
 
     create_table :page_users do |t|
       t.references :page, null: false, foreign_key: true
@@ -54,12 +55,14 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.integer :role, null: false
       t.timestamps
     end
+    add_index :page_users, [ :page_id, :user_id ], unique: true
 
     create_table :page_followers do |t|
       t.references :page, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end
+    add_index :page_followers, [ :page_id, :user_id ], unique: true
 
     create_table :page_reviews do |t|
       t.references :page, null: false, foreign_key: true
@@ -82,6 +85,7 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end
+    add_index :page_post_bookmarks, [ :page_post_id, :user_id ], unique: true
 
     create_table :official_posts do |t|
       t.integer :status, null: false
@@ -95,5 +99,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end
+    add_index :official_post_bookmarks, [ :official_post_id, :user_id ], unique: true
   end
 end
