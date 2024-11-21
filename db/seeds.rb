@@ -29,12 +29,12 @@ end
   { id: 11, name: "知的", category_id: 2, sequence: 6 },
   { id: 12, name: "盲", category_id: 3, sequence: 1 },
   { id: 13, name: "弱視", category_id: 3, sequence: 2 },
-  { id: 14, name: "目・先天性", category_id: 3, sequence: 3 },
-  { id: 15, name: "目・中途", category_id: 3, sequence: 4 },
+  { id: 14, name: "め・先天性", category_id: 3, sequence: 3 },
+  { id: 15, name: "め・中途", category_id: 3, sequence: 4 },
   { id: 16, name: "聾", category_id: 4, sequence: 1 },
   { id: 17, name: "難聴", category_id: 4, sequence: 2 },
-  { id: 18, name: "耳・先天性", category_id: 4, sequence: 3 },
-  { id: 19, name: "耳・中途", category_id: 4, sequence: 4 },
+  { id: 18, name: "みみ・先天性", category_id: 4, sequence: 3 },
+  { id: 19, name: "みみ・中途", category_id: 4, sequence: 4 },
   { id: 20, name: "上肢", category_id: 5, sequence: 1 },
   { id: 21, name: "下肢", category_id: 5, sequence: 2 },
   { id: 22, name: "心疾患", category_id: 6, sequence: 1 },
@@ -49,14 +49,14 @@ end
 [
   {
     id: 1,
-    genre: 1,
-    name: "NPO法人みのり",
+    genre: 3,
+    name: "日本視覚障害者団体連合",
     status: 1,
     is_verified: true,
-    bio: "はじめまして。「領家グリーンゲイブルズ」施設長の加藤木貢児です。「盲学校卒業後の子どもたちの生活が、”みのり”あるものになることを願って」そんな想いで、2013年5月、盲学校の保護者達によってつくられたみのり。",
+    bio: "当アカウントは見えない・見えにくい方とその家族、医療関係者、支援者の方々に情報を発信することを目的としています。\nhttp://nichimou.org/",
     posts_count: 2,
     reviews_count: 2,
-    keyword_ids: [ 12, 13, 11, 4 ]
+    keyword_ids: [ 12, 13, 14, 15 ]
   }
 ].each do |page|
   p = Page.create(
