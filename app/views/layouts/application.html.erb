@@ -23,7 +23,7 @@
   </head>
   <body>
     <%= render "shared/header" unless content_for?(:skip_header) %>
-    <div class="container mx-auto px-4 py-3 max-w-screen-lg">
+    <div class="mx-auto max-w-screen-md">
       <%= yield %>
     </div>
     <%= render "shared/toast" if flash.any? %>

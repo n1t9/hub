@@ -32,6 +32,8 @@
             <hr class="my-4">
             <a href="#" class="block text-gray-700 mt-2">ブックマークしたポスト</a>
             <hr class="my-4">
+            <%= link_to t("helpers.pages.mypages"), mypages_path, class: "block text-gray-700 mt-2" %>
+            <hr class="my-4">
             <%= link_to t("helpers.setting.title"), settings_path, class: "block text-gray-700 mt-2" %>
             <hr class="my-4">
             <%= button_to "ログアウト", signout_path, method: :post, class: "w-full text-gray-700 rounded border py-2" %>
