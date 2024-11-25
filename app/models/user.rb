@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
   has_one_attached :profile_image
+  has_many :page_users, dependent: :destroy
+  has_many :pages, through: :page_users, dependent: :destroy
+  has_many :page_followers, dependent: :destroy
+  has_many :following_pages, through: :page_followers, source: :page, dependent: :destroy
+  has_many :page_post_bookmarks, dependent: :destroy
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :password_digest, presence: true
@@ -34,5 +39,17 @@ class User < ApplicationRecord
     else
       "default_profile_image.png"
     end
+  end
+
+  def page_editor?(page)
+    page_users.find_by(page_id: page.id)
+  end
+
+  def page_follower?(page)
+    page_followers.find_by(page_id: page.id)
+  end
+
+  def page_post_bookmark?(page_post)
+    page_post_bookmarks.find_by(page_post_id: page_post.id)
   end
 end
