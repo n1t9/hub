@@ -130,6 +130,9 @@ ja:
         name: ページ名
         bio: ページの説明
   helpers:
+    separator: 、
+    time_ago: "前"
+    see_more: "もっと見る"
     submit:
       create: 登録する
       update: 更新する
@@ -137,6 +140,8 @@ ja:
     home:
       welcome: '%{name}さん、こんにちは'
       welcome_guest: 'Inclusive Hubへようこそ'
+      new_posts: 新着ポスト
+      inclusive_hub_editors: Inclusive Hub編集部
     signin:
       title: ログイン
       submit: ログインする

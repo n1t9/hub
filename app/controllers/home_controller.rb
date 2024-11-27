@@ -6,5 +6,6 @@ class HomeController < ApplicationController
     @categories = Category.includes(:keywords).order(:id)
     @pages = Page.order(created_at: :desc).limit(5)
     @page_posts = PagePost.order(created_at: :desc).limit(5)
+    @official_posts = OfficialPost.order(created_at: :desc).limit(5)
   end
 end
