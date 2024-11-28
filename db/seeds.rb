@@ -200,7 +200,7 @@ end
 end
 
 # official_post
-[
+official_posts = [
   {
     status: 1,
     title: "【横断 #21】キヤスクで描く誰もが好きな服を着られる世界",
@@ -246,7 +246,36 @@ end
       \nそんな中で、SNSを通じて、同じような境遇でお子さんを介護する親御さんを調べ、ブログなどに行きつく。
     "
   }
-].each do |official_post|
+]
+official_posts.each do |official_post|
+  OfficialPost.create(
+    status: official_post[:status],
+    title: official_post[:title],
+    content: official_post[:content]
+  )
+end
+official_posts.each do |official_post|
+  OfficialPost.create(
+    status: official_post[:status],
+    title: official_post[:title],
+    content: official_post[:content]
+  )
+end
+official_posts.each do |official_post|
+  OfficialPost.create(
+    status: official_post[:status],
+    title: official_post[:title],
+    content: official_post[:content]
+  )
+end
+official_posts.each do |official_post|
+  OfficialPost.create(
+    status: official_post[:status],
+    title: official_post[:title],
+    content: official_post[:content]
+  )
+end
+official_posts.each do |official_post|
   OfficialPost.create(
     status: official_post[:status],
     title: official_post[:title],
