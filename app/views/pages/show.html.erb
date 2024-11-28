@@ -1,0 +1,59 @@
+<div class="px-4 py-3 bg-white">
+  <div class="flex items-center justify-between">
+    <div>
+      <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover" %>
+    </div>
+    <% if current_user&.page_editor?(@page) %>
+      <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-black" do %>
+        <%= t("helpers.pages.edit") %>
+      <% end %>
+    <% else %>
+      <% if current_user&.page_follower?(@page) %>
+        <%= button_to page_follow_path(@page.id), method: :delete, class: "p-3 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.unfollow_confirm") } do %>
+          <%= t("helpers.pages.following") %>
+        <% end %>
+      <% else %>
+        <% if current_user %>
+          <%= button_to page_follow_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-black" do %>
+            <%= t("helpers.pages.follow") %>
+          <% end %>
+        <% else %>
+          <%= button_to signin_path, method: :get, class: "p-3 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
+            <%= t("helpers.pages.follow") %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-4">
+    <h2 class="text-xl font-bold flex items-center">
+      <%= @page.name %>
+      <% if @page.is_verified? %>
+        <span class="text-blue-500 material-icons-outlined">
+          check_circle
+        </span>
+      <% end %>
+    </h2>
+    <div class="mt-2">
+      <span class="font-bold"><%= @page.page_followers.count %></span>
+      <span class="text-gray-500 text-sm">フォロワー</span>
+    </div>
+    <div class="mt-2 text-sm text-gray-500"><%= simple_format(auto_link(@page.bio, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
+  </div>
+</div>
+<ul class="mt-4 flex flex-wrap text-sm font-medium text-center">
+  <li class="flex-1 border-r-2 border-gray-200 bg-white">
+    <a href="#" aria-current="page" class="inline-block w-full p-4">トップ</a>
+  </li>
+  <li class="flex-1 border-r-2 border-gray-200">
+    <a href="#" class="inline-block w-full p-4">ポスト</a>
+  </li>
+  <li class="flex-1">
+    <a href="#" class="inline-block w-full p-4">口コミ</a>
+  </li>
+</ul>
+<div class="bg-white">
+  <div class="px-4 py-3">
+    <h3 class="text-lg font-bold">ポスト</h3>
+  </div>
+</div>
