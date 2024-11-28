@@ -7,6 +7,16 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<span class="page<%= ' current' if page.current? %>">
-  <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} %>
-</span>
+<% if page.current? %>
+  <div class="px-2 py-0.5 bg-gray-800 text-white rounded border border-gray-800">
+    <span>
+      <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} %>
+    </span>
+  </div>
+<% else %>
+  <div class="px-2 py-0.5 rounded border border-gray-300">
+    <span>
+      <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} %>
+    </span>
+  </div>
+<% end %>

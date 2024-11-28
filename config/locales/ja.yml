@@ -129,19 +129,34 @@ ja:
       page:
         name: ページ名
         bio: ページの説明
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前へ"
+      next: "次へ"
+      truncate: "..."
   helpers:
     separator: 、
     time_ago: "前"
     see_more: "もっと見る"
+    inclusive_hub_editors: Inclusive Hub編集部
     submit:
       create: 登録する
       update: 更新する
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: 該当するデータはありません
+          one: "<b>1</b>件を表示"
+          other: "<b>%{count}</b>件を表示"
+      more_pages:
+        display_entries: "<b>%{first}~%{last}</b>件を表示/全<b>%{total}</b>件"
     top: トップ
     home:
       welcome: '%{name}さん、こんにちは'
       welcome_guest: 'Inclusive Hubへようこそ'
       new_posts: 新着ポスト
-      inclusive_hub_editors: Inclusive Hub編集部
     signin:
       title: ログイン
       submit: ログインする
