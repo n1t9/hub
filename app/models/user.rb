@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :page_followers, dependent: :destroy
   has_many :following_pages, through: :page_followers, source: :page, dependent: :destroy
   has_many :page_post_bookmarks, dependent: :destroy
+  has_many :official_post_bookmarks, dependent: :destroy
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :password_digest, presence: true
@@ -51,5 +52,9 @@ class User < ApplicationRecord
 
   def page_post_bookmark?(page_post)
     page_post_bookmarks.find_by(page_post_id: page_post.id)
+  end
+
+  def official_post_bookmark?(official_post)
+    official_post_bookmarks.find_by(official_post_id: official_post.id)
   end
 end
