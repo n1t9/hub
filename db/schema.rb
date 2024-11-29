@@ -109,14 +109,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
 
   create_table "page_posts", force: :cascade do |t|
     t.bigint "page_id", null: false
-    t.bigint "user_id", null: false
     t.integer "status", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["page_id"], name: "index_page_posts_on_page_id"
-    t.index ["user_id"], name: "index_page_posts_on_user_id"
   end
 
   create_table "page_reviews", force: :cascade do |t|
@@ -182,7 +180,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
   add_foreign_key "page_post_bookmarks", "page_posts"
   add_foreign_key "page_post_bookmarks", "users"
   add_foreign_key "page_posts", "pages"
-  add_foreign_key "page_posts", "users"
   add_foreign_key "page_reviews", "pages"
   add_foreign_key "page_reviews", "users"
   add_foreign_key "page_users", "pages"

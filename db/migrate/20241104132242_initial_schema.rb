@@ -73,7 +73,6 @@ class InitialSchema < ActiveRecord::Migration[7.2]
 
     create_table :page_posts do |t|
       t.references :page, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
       t.integer :status, null: false
       t.string :title, null: false
       t.text :content, null: false
