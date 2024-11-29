@@ -20,13 +20,15 @@
 <div class="px-4">
   <ul class="flex flex-wrap">
     <% @keywords.each do |keyword| %>
-      <li class="mr-1.5 mt-2">
-        <div class="flex items-center rounded bg-white px-3 py-1 text-xs leading-5 border border-gray-500">
-          <%= link_to keyword_path(keyword), class: "text-gray font-bold" do %>
-            <%= keyword.name %>
-          <% end %>
-        </div>
-      </li>
+      <%= link_to keyword_path(keyword) do %>
+        <li class="mr-1.5">
+          <div class="flex items-center rounded bg-white px-3 py-1 text-xs leading-5 border border-gray-500">
+            <span class="text-gray font-bold">
+              <%= keyword.name %>
+            </span>
+          </div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>

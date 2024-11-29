@@ -38,7 +38,7 @@
       <span class="font-bold"><%= @page.page_followers.count %></span>
       <span class="text-gray-500 text-sm">フォロワー</span>
     </div>
-    <div class="mt-2 text-sm text-gray-500"><%= simple_format(auto_link(@page.bio, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
+    <div class="mt-2 text-sm text-gray-500 break-all"><%= simple_format(auto_link(@page.bio, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
   </div>
 </div>
 <ul class="mt-4 flex flex-wrap text-sm font-medium text-center">

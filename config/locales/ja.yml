@@ -141,6 +141,8 @@ ja:
     time_ago: "前"
     see_more: "もっと見る"
     inclusive_hub_editors: Inclusive Hub編集部
+    civilian: 民間・企業
+    government: 行政
     submit:
       create: 登録する
       update: 更新する
