@@ -1,4 +1,15 @@
 class PagesController < ApplicationController
+  def index
+    @genre = params[:genre]? params[:genre].to_i : 1
+    pages = Page.where(genre: @genre)
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @pages = pages.joins(:page_keywords).where(page_keywords: { keyword_id: @category.keywords.pluck(:id) }).distinct.order(:updated_at).page(params[:page]).per(10)
+    else
+      @pages = pages.order(:updated_at).page(params[:page]).per(10)
+    end
+  end
+
   def show
     @page = Page.find(params[:id])
   end
