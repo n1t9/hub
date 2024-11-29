@@ -1,0 +1,14 @@
+<div class="mx-auto max-w-screen-sm sm:mt-12 bg-white">
+  <%= image_tag @official_post.display_cover_image, class: "w-full object-cover" %>
+  <div class="px-4 py-8 sm:px-0">
+    <div>
+      <h2 class="text-xl sm:text-2xl font-bold flex items-center">
+        <%= @official_post.title %>
+      </h2>
+    </div>
+    <div class="mt-8">
+      <div class="break-all leading-8"><%= simple_format(auto_link(@official_post.content, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
+    </div>
+  </div>
+</div>
+<%= render "shared/feedback_white" %>
