@@ -1,0 +1,27 @@
+<div class="mx-auto max-w-screen-sm sm:mt-12 bg-white">
+  <%= image_tag @page_post.display_cover_image, class: "w-full object-cover" %>
+  <div class="px-4 sm:px-0">
+    <div class="mt-8">
+      <h2 class="text-xl sm:text-2xl font-bold flex items-center">
+        <%= @page_post.title %>
+      </h2>
+    </div>
+    <div class="mt-6">
+      <%= link_to page_path(@page_post.page) do %>
+        <div class="flex items-center">
+          <div class="mr-4">
+            <%= image_tag @page_post.page.display_profile_image, class: "w-10 h-10 object-cover" %>
+          </div>
+          <div>
+            <h5 class="text-lg font-bold tracking-tight"><%= @page_post.page.name %></h5>
+            <p class="text-sm text-gray-700"><%= format_datetime(@page_post.created_at) %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="mt-8">
+      <div class="break-all leading-8"><%= simple_format(auto_link(@page_post.content, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
+    </div>
+  </div>
+</div>
+<%= render "shared/feedback_white" %>
