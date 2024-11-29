@@ -1,0 +1,24 @@
+<li class="pt-2 pb-3 border-gray-300 border-b">
+  <%= link_to page_path(page), class: "block" do %>
+    <div class="flex items-center">
+      <div class="w-16 flex-shrink-0">
+        <%= image_tag page.display_profile_image, class: "w-16 h-16 object-cover rounded" %>
+      </div>
+      <div class="ml-4">
+        <h3 class="font-bold"><%= page.name %></h3>
+        <p class="mt-2 text-sm line-clamp-2 overflow-hidden text-ellipsis break-all"><%= page.bio %></p>
+      </div>
+    </div>
+    <div class="mt-0.5">
+      <ul class="flex flex-wrap">
+        <% page.keywords.each do |keyword| %>
+          <li class="mt-1 mr-1.5">
+            <div class="px-1.5 flex items-center rounded border border-gray-400 text-xs leading-5">
+              <span class="text-gray"><%= keyword.name %></span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</li>

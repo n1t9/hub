@@ -1,0 +1,13 @@
+<div class="px-3 md:px-5 py-2 border border-gray-400 rounded-md bg-white">
+  <%= link_to category_path(category.id) do %>
+    <div class="flex items-center space-x-4">
+      <div>
+        <%= image_tag category.icon, class: "w-8 h-8" %>
+      </div>
+      <div>
+        <h5 class="text-lg font-bold tracking-tight"><%= category.name %></h5>
+        <p class="text-xs text-gray-700"><%= category.keywords.map(&:name).join(t("helpers.separator")) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

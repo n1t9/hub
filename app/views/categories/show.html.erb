@@ -32,7 +32,58 @@
     <% end %>
   </ul>
 </div>
-<h2 class="text-xl">pages</h2>
-<% @pages.each do |page| %>
-  <%= page.name %>
-<% end %>
+<div class="mt-4 p-4 bg-white">
+  <h2 class="text-xl font-bold">
+    <%= t("helpers.home.new_posts") %>
+  </h2>
+  <ul class="mt-4">
+    <% @page_posts.each do |post| %>
+      <%= render "shared/page_post_item", post: post, page_posts: @page_posts %>
+    <% end %>
+  </ul>
+</div>
+<div class="mt-4 p-4 bg-white">
+  <div class="flex">
+    <h2 class="text-xl font-bold">
+      <%= t("helpers.civilian") %>
+    </h2>
+    <div class="ml-auto">
+      <%= link_to nil, class: "block px-2 py-1 border border-gray-400 rounded inline-flex items-center text-sm text-gray-700" do %>
+        <%= t("helpers.see_more") %>
+        <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
+          arrow_forward_ios
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <ul class="mt-4">
+      <% @civilian_pages.each do |page| %>
+        <%= render "shared/page_item", page: page %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="mt-4 p-4 bg-white">
+  <div class="flex">
+    <h2 class="text-xl font-bold">
+      <%= t("helpers.government") %>
+    </h2>
+    <div class="ml-auto">
+      <%= link_to nil, class: "block px-2 py-1 border border-gray-400 rounded inline-flex items-center text-sm text-gray-700" do %>
+        <%= t("helpers.see_more") %>
+        <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
+          arrow_forward_ios
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <ul class="mt-4">
+      <% @government_pages.each do |page| %>
+        <%= render "shared/page_item", page: page %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<%= render "shared/feedback_white" %>
