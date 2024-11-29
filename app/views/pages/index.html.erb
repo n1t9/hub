@@ -11,7 +11,12 @@
           <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
-          <span class="ms-1 text-lg font-medium md:ms-2"><%= t("helpers.inclusive_hub_editors") %></span>
+          <span class="ms-1 text-lg font-medium md:ms-2"><%= t("helpers.pages.index") %></span>
+          <% if @category %>
+            <span class="ms-1 text-lg font-medium md:ms-2">(<%= @category.name %> / <%= @genre == 1 ? t("helpers.civilian") : t("helpers.government") %>)</span>
+          <% else %>
+            <span class="ms-1 text-lg font-medium md:ms-2">(<%= @genre == 1 ? t("helpers.civilian") : t("helpers.government") %>)</span>
+          <% end %>
         </div>
       </li>
     </ol>
@@ -19,16 +24,16 @@
 </div>
 <div class="p-4 bg-white">
   <div>
-    <%= page_entries_info @official_posts %>
+    <%= page_entries_info @pages %>
   </div>
   <div>
     <ul class="mt-4">
-      <% @official_posts.each do |post| %>
-        <%= render "shared/official_post_item", post: post, official_posts: @official_posts %>
+      <% @pages.each do |page| %>
+        <%= render "shared/page_item", page: page %>
       <% end %>
     </ul>
     <div>
-      <%= paginate @official_posts %>
+      <%= paginate @pages %>
     </div>
   </div>
 </div>
