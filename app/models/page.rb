@@ -8,6 +8,7 @@ class Page < ApplicationRecord
   has_many :followers, through: :page_followers, source: :user
 
   enum status: { active: 1, inactive: 2 }
+  enum genre: { civilian: 1, government: 2 }
 
   def display_profile_image
     if profile_image.attached?
