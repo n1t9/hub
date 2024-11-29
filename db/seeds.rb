@@ -53,10 +53,9 @@ end
 end
 
 # page
-[
+pages = [
   {
-    id: 1,
-    genre: 3,
+    genre: 1,
     name: "日本視覚障害者団体連合",
     status: 1,
     is_verified: true,
@@ -67,8 +66,7 @@ end
     profile_image: "shikaku_dantai.jpg"
   },
   {
-    id: 2,
-    genre: 3,
+    genre: 1,
     name: "株式会社Ashirase",
     status: 1,
     is_verified: false,
@@ -77,23 +75,50 @@ end
     reviews_count: 0,
     keyword_ids: [ Keyword.all[12].id, Keyword.all[13].id, Keyword.all[11].id, Keyword.all[14].id ],
     profile_image: "ashirase.avif"
+  },
+  {
+    genre: 1,
+    name: "AIスーツケース",
+    status: 1,
+    is_verified: false,
+    bio: "視覚障害者の移動を支援する自律型ナビゲーションロボット『AIスーツケース』\nhttps://www.miraikan.jst.go.jp/research/AccessibilityLab/AIsuitcase/",
+    posts_count: 0,
+    reviews_count: 0,
+    keyword_ids: [ Keyword.all[11].id, Keyword.all[12].id, Keyword.all[13].id, Keyword.all[14].id ],
+    profile_image: "miraikan.png"
+  },
+  {
+    genre: 1,
+    name: "いちほまれ",
+    status: 1,
+    is_verified: false,
+    bio: "日本初 #ブラインドeレーサー いちほまれとして #eモータースポーツ の大会に参加中。色々な大会への出場機会をいただく中で #福井県 とこんな #技術士 #視覚障がい者 もいるんだと親近感と興味を持っていただけると嬉しいです！ #網膜色素変性症 #弱視 #白杖",
+    posts_count: 0,
+    reviews_count: 0,
+    keyword_ids: [ Keyword.all[12].id, Keyword.all[14].id ],
+    profile_image: "ichihomare.webp"
   }
-].each do |page|
-  p = Page.create(
-    id: page[:id],
-    genre: page[:genre],
-    name: page[:name],
-    status: page[:status],
-    is_verified: page[:is_verified],
-    bio: page[:bio],
-    posts_count: page[:posts_count],
-    reviews_count: page[:reviews_count],
-    profile_image: File.open(Rails.root.join("app/assets/images/#{page[:profile_image]}"))
-  )
-  page[:keyword_ids].each_with_index do |keyword_id, i|
-    p.page_keywords.create(page_id: p.id, keyword_id: keyword_id, sequence: i + 1)
+]
+def create_pages(pages)
+  pages.each do |page|
+    p = Page.create(
+      genre: page[:genre],
+      name: page[:name],
+      status: page[:status],
+      is_verified: page[:is_verified],
+      bio: page[:bio],
+      posts_count: page[:posts_count],
+      reviews_count: page[:reviews_count],
+      profile_image: File.open(Rails.root.join("app/assets/images/#{page[:profile_image]}"))
+    )
+    page[:keyword_ids].each_with_index do |keyword_id, i|
+      p.page_keywords.create(page_id: p.id, keyword_id: keyword_id, sequence: i + 1)
+    end
   end
 end
+create_pages(pages)
+create_pages(pages)
+create_pages(pages)
 
 
 # user
@@ -149,7 +174,6 @@ end
 [
   {
     page_id: Page.all[0].id,
-    user_id: User.all[0].id,
     status: 1,
     title: "視力の数字が同じでも人によって見え方は違って…",
     content: "鷹林さんは、生まれつき弱視でおられる。弱視と一言で言っても「視力の数字が同じでも人によって見え方は違って、その違いは障害者手帳の等級には表れない」と教えてもらった。\n例えば、鷹林さんは、眼球が痙攣したように動いたり揺れたりする「眼球振盪（がんきゅうしんとう）」という症状をお持ちで、文字が大きくないと見えないだけではなく、「馬」など4本も5本も線があるようなゴチャゴチャした文字を読むことも難しい。
@@ -162,7 +186,6 @@ end
   },
   {
     page_id: Page.all[0].id,
-    user_id: User.all[0].id,
     status: 1,
     title: "視界は常に真っ白い状態だ…",
     content: "小川さんは先天性の弱視で、右目は小学校の頃に失明した。濃淡の差はあれど視界は常に真っ白い状態だ。
@@ -177,7 +200,6 @@ end
   },
   {
     page_id: Page.all[1].id,
-    user_id: User.all[0].id,
     status: 1,
     title: "自動運転エンジニアから視覚障害への挑戦",
     content: "千野さんは、スマートフォンアプリと靴につける振動インターフェースで視覚障害者の歩行をナビゲーションする『あしらせ』を開発・販売する株式会社Ashiraseの代表をされている。同社は、日本を代表する自動車メーカーであるHondaの新事業創出プログラム「IGNITION（イグニッション）」発のベンチャー企業第1号である。
@@ -192,7 +214,6 @@ end
   PagePost.create(
     id: page_post[:id],
     page_id: page_post[:page_id],
-    user_id: page_post[:user_id],
     status: page_post[:status],
     title: page_post[:title],
     content: page_post[:content]
@@ -247,38 +268,17 @@ official_posts = [
     "
   }
 ]
-official_posts.each do |official_post|
-  OfficialPost.create(
-    status: official_post[:status],
-    title: official_post[:title],
-    content: official_post[:content]
-  )
+def create_official_posts(official_posts)
+  official_posts.each do |official_post|
+    OfficialPost.create(
+      status: official_post[:status],
+      title: official_post[:title],
+      content: official_post[:content]
+    )
+  end
 end
-official_posts.each do |official_post|
-  OfficialPost.create(
-    status: official_post[:status],
-    title: official_post[:title],
-    content: official_post[:content]
-  )
-end
-official_posts.each do |official_post|
-  OfficialPost.create(
-    status: official_post[:status],
-    title: official_post[:title],
-    content: official_post[:content]
-  )
-end
-official_posts.each do |official_post|
-  OfficialPost.create(
-    status: official_post[:status],
-    title: official_post[:title],
-    content: official_post[:content]
-  )
-end
-official_posts.each do |official_post|
-  OfficialPost.create(
-    status: official_post[:status],
-    title: official_post[:title],
-    content: official_post[:content]
-  )
-end
+create_official_posts(official_posts)
+create_official_posts(official_posts)
+create_official_posts(official_posts)
+create_official_posts(official_posts)
+create_official_posts(official_posts)

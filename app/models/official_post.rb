@@ -5,7 +5,7 @@ class OfficialPost < ApplicationRecord
     if cover_image.attached?
       cover_image
     else
-      "default_post_cover_image.webp"
+      "default_post_cover_image.png"
     end
   end
 end
