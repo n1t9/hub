@@ -37,7 +37,7 @@
             <%= link_to t("helpers.setting.title"), settings_path, class: "block text-gray-700 mt-2" %>
             <hr class="my-4">
             <%= button_to "ログアウト", signout_path, method: :post, class: "w-full text-gray-700 rounded border py-2" %>
-            <%= render "shared/feedback" %>
+            <%= render "shared/feedback_gray" %>
           </div>
         <% end %>
       </div>
@@ -50,7 +50,7 @@
           <%= link_to t("helpers.signup.title"), signup_path, class: "flex-1 bg-blue-500 text-white font-bold py-2 px-4 rounded text-center" %>
           <%= link_to t("helpers.signin.title"), signin_path, class: "flex-1 border font-bold py-2 px-4 rounded text-center" %>
         </div>
-        <%= render "shared/feedback" %>
+        <%= render "shared/feedback_gray" %>
       </div>
     <% end %>
   </div>
