@@ -15,7 +15,7 @@ Category.delete_all
   { name: "め", icon: "icon-me.png" },
   { name: "みみ", icon: "icon-mimi.png" },
   { name: "てあし", icon: "icon-teashi.png" },
-  { name: "ないぶ", icon: "icon-naibu" }
+  { name: "ないぶ", icon: "icon-naibu.png" }
 ].each do |category|
   Category.create(id: category[:id], name: category[:name], icon: category[:icon])
 end
