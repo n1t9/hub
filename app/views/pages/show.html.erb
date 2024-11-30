@@ -36,24 +36,124 @@
     </h2>
     <div class="mt-2">
       <span class="font-bold"><%= @page.page_followers.count %></span>
-      <span class="text-gray-500 text-sm">フォロワー</span>
+      <span class="text-gray-500 text-sm"><%= t("helpers.pages.followers") %></span>
     </div>
     <div class="mt-2 text-sm text-gray-500 break-all"><%= simple_format(auto_link(@page.bio, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
+    <div class="mt-2">
+      <ul class="flex flex-wrap">
+        <% @page.keywords.each do |keyword| %>
+          <li class="mt-1 mr-1.5">
+            <div class="px-1.5 flex items-center rounded border border-gray-400 text-xs leading-5">
+              <span class="text-gray"><%= keyword.name %></span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 <ul class="mt-4 flex flex-wrap text-sm font-medium text-center">
-  <li class="flex-1 border-r-2 border-gray-200 bg-white">
-    <a href="#" aria-current="page" class="inline-block w-full p-4">トップ</a>
+  <li class="flex-1 <%= @tab == "top" ? "bg-white" : "" %>">
+    <%= link_to page_path(@page.id, tab: "top"), class: "inline-block w-full p-4" do %>
+      <%= t("helpers.pages.top") %>
+    <% end %>
   </li>
-  <li class="flex-1 border-r-2 border-gray-200">
-    <a href="#" class="inline-block w-full p-4">ポスト</a>
+  <li class="flex-1 border-l-2 border-r-2 border-gray-200 <%= @tab == "posts" ? "bg-white" : "" %>">
+    <%= link_to page_path(@page.id, tab: "posts"), class: "inline-block w-full p-4" do %>
+      <%= t("helpers.pages.posts") %>
+    <% end %>
   </li>
-  <li class="flex-1">
-    <a href="#" class="inline-block w-full p-4">口コミ</a>
+  <li class="flex-1 <%= @tab == "reviews" ? "bg-white" : "" %>">
+    <%= link_to page_path(@page.id, tab: "reviews"), class: "inline-block w-full p-4" do %>
+      <%= t("helpers.pages.reviews") %>
+    <% end %>
   </li>
 </ul>
-<div class="bg-white">
-  <div class="px-4 py-3">
-    <h3 class="text-lg font-bold">ポスト</h3>
+<% if @tab == "top" %>
+  <div class="p-4 bg-white">
+    <div class="flex">
+      <h2 class="text-xl font-bold">
+        <%= t("helpers.pages.posts") %>
+      </h2>
+    </div>
+    <div>
+      <ul class="mt-4">
+        <% content_for :skip_keywords, true %>
+        <% @page_posts.each do |post| %>
+          <%= render "shared/page_post_item", post: post, page_posts: @page_posts %>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="mt-8 p-4 bg-white">
+    <div class="flex">
+      <h2 class="text-xl font-bold">
+        <%= t("helpers.pages.reviews") %>
+      </h2>
+      <div class="ml-auto">
+        <% if current_user %>
+          <%= button_to nil, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black" do %>
+            <%= t("helpers.pages.write_review") %>
+          <% end %>
+        <% else %>
+          <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
+            <%= t("helpers.pages.write_review") %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <ul class="mt-4">
+        <% @page_reviews.each do |review| %>
+          <%= render "shared/page_review_item", review: review %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% elsif @tab == "posts" %>
+  <div class="p-4 bg-white">
+    <div class="flex">
+      <h2 class="text-xl font-bold">
+        <%= t("helpers.pages.posts") %>
+      </h2>
+    </div>
+    <div class="mt-4">
+      <%= page_entries_info @page_posts %>
+    </div>
+    <div>
+      <ul class="mt-4">
+        <% @page_posts.each do |post| %>
+          <%= render "shared/page_post_item", post: post, page_posts: @page_posts %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% elsif @tab == "reviews" %>
+  <div class="p-4 bg-white">
+    <div class="flex">
+      <h2 class="text-xl font-bold">
+        <%= t("helpers.pages.reviews") %>
+      </h2>
+      <div class="ml-auto">
+        <% if current_user %>
+          <%= button_to nil, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black" do %>
+            <%= t("helpers.pages.write_review") %>
+          <% end %>
+        <% else %>
+          <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
+            <%= t("helpers.pages.write_review") %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="mt-4">
+      <%= page_entries_info @page_reviews %>
+    </div>
+    <div>
+      <ul class="mt-4">
+        <% @page_reviews.each do |review| %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
