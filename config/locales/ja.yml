@@ -186,6 +186,11 @@ ja:
       edit: ページの編集
       follow: フォローする
       following: フォロー中
+      top: トップ
+      posts: ポスト
+      reviews: 口コミ
+      followers: フォロワー
+      write_review: 口コミを書く
     setting:
       title: 設定
       change_image: 画像を変更する

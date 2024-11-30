@@ -6,6 +6,8 @@ class Page < ApplicationRecord
   has_many :keywords, through: :page_keywords
   has_many :page_followers
   has_many :followers, through: :page_followers, source: :user
+  has_many :page_posts
+  has_many :page_reviews
 
   enum status: { active: 1, inactive: 2 }
   enum genre: { civilian: 1, government: 2 }

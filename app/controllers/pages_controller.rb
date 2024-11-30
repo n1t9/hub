@@ -12,6 +12,15 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
+    @tab = params[:tab]? params[:tab] : "top"
+    if @tab == "top"
+      @page_posts = @page.page_posts.order(updated_at: :desc).limit(5)
+      @page_reviews = @page.page_reviews.order(updated_at: :desc).limit(5)
+    elsif @tab == "posts"
+      @page_posts = @page.page_posts.order(updated_at: :desc).page(params[:page]).per(10)
+    elsif @tab == "reviews"
+      @page_reviews = @page.page_reviews.order(updated_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   def edit
