@@ -5,7 +5,7 @@ export class HubStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const imageTag = '2024-11-30-23-21-a53f7c7';
+    const imageTag = '2024-12-01-00-29-18f3001';
     const acmArn = 'arn:aws:acm:ap-northeast-1:442426895348:certificate/712c6011-f972-4ccf-8be0-710e4c8cde57';
 
     const vpc = new cdk.aws_ec2.Vpc(this, 'VPC', {
@@ -194,14 +194,10 @@ export class HubStack extends cdk.Stack {
         path: '/health_check',
         protocol: cdk.aws_elasticloadbalancingv2.Protocol.HTTP,
         healthyHttpCodes: '200',
-        // interval: cdk.Duration.seconds(10),
-        // timeout: cdk.Duration.seconds(5),
-        interval: cdk.Duration.seconds(120),
-        timeout: cdk.Duration.seconds(100),
-        // healthyThresholdCount: 2,
-        // unhealthyThresholdCount: 2,
-        healthyThresholdCount: 10,
-        unhealthyThresholdCount: 10,
+        interval: cdk.Duration.seconds(10),
+        timeout: cdk.Duration.seconds(5),
+        healthyThresholdCount: 2,
+        unhealthyThresholdCount: 2,
       },
     });
     targetGroup.addTarget(service);
