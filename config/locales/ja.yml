@@ -181,6 +181,7 @@ ja:
       background_detail: バックグラウンド等をご記入ください、例）○○障害の当事者、家族、研究開発者など
       submit: 登録する
     pages:
+      title: ページ
       index: ページ一覧
       mypages: 自分のページ
       edit: ページの編集

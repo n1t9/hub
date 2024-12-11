@@ -1,16 +1,13 @@
 class Page < ApplicationRecord
+  acts_as_paranoid
   has_one_attached :profile_image
-  has_many :page_users
-  has_many :users, through: :page_users
-  has_many :page_keywords
-  has_many :keywords, through: :page_keywords
+  belongs_to :category
+  has_many :page_managers
+  has_many :managers, through: :page_managers, source: :user
   has_many :page_followers
   has_many :followers, through: :page_followers, source: :user
   has_many :page_posts
   has_many :page_reviews
-
-  enum status: { active: 1, inactive: 2 }
-  enum genre: { civilian: 1, government: 2 }
 
   def display_profile_image
     if profile_image.attached?
