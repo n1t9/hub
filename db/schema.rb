@@ -123,6 +123,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.string "name", null: false
     t.boolean "is_verified", default: false, null: false
     t.text "bio", null: false
+    t.string "url", null: false
     t.integer "posts_count", default: 0, null: false
     t.integer "reviews_count", default: 0, null: false
     t.datetime "created_at", null: false

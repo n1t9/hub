@@ -42,6 +42,7 @@ class InitialSchema < ActiveRecord::Migration[7.2]
       t.string :name, null: false
       t.boolean :is_verified, null: false, default: false
       t.text :bio, null: false
+      t.string :url, null: false
       t.integer :posts_count, null: false, default: 0
       t.integer :reviews_count, null: false, default: 0
 
