@@ -17,35 +17,30 @@
     </ol>
   </nav>
 </div>
-<div class="px-4">
-  <ul class="flex flex-wrap">
-    <% @keywords.each do |keyword| %>
-      <%= link_to keyword_path(keyword) do %>
-        <li class="mr-1.5">
-          <div class="flex items-center rounded bg-white px-3 py-1 text-xs leading-5 border border-gray-500">
-            <span class="text-gray font-bold">
-              <%= keyword.name %>
-            </span>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
-</div>
 <div class="mt-4 p-4 bg-white">
-  <h2 class="text-xl font-bold">
-    <%= t("helpers.home.new_posts") %>
-  </h2>
+  <div class="flex">
+    <h2 class="text-xl font-bold">
+      <%= t("helpers.home.new_posts") %>
+    </h2>
+    <div class="ml-auto">
+      <%= link_to page_posts_path(category_id: @category.id), class: "block px-2 py-1 border border-gray-400 rounded inline-flex items-center text-sm text-gray-700" do %>
+        <%= t("helpers.see_more") %>
+        <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
+          arrow_forward_ios
+        </span>
+      <% end %>
+    </div>
+  </div>
   <ul class="mt-4">
     <% @page_posts.each do |post| %>
-      <%= render "shared/page_post_item", post: post, page_posts: @page_posts %>
+      <%= render "page_posts/page_post_item", post: post, page_posts: @page_posts %>
     <% end %>
   </ul>
 </div>
 <div class="mt-4 p-4 bg-white">
   <div class="flex">
     <h2 class="text-xl font-bold">
-      <%= t("helpers.civilian") %>
+      <%= t("helpers.pages.title") %>
     </h2>
     <div class="ml-auto">
       <%= link_to pages_path(genre: 1, category_id: @category.id), class: "block px-2 py-1 border border-gray-400 rounded inline-flex items-center text-sm text-gray-700" do %>
@@ -58,30 +53,8 @@
   </div>
   <div>
     <ul class="mt-4">
-      <% @civilian_pages.each do |page| %>
-        <%= render "shared/page_item", page: page %>
-      <% end %>
-    </ul>
-  </div>
-</div>
-<div class="mt-4 p-4 bg-white">
-  <div class="flex">
-    <h2 class="text-xl font-bold">
-      <%= t("helpers.government") %>
-    </h2>
-    <div class="ml-auto">
-      <%= link_to pages_path(genre: 2, category_id: @category.id), class: "block px-2 py-1 border border-gray-400 rounded inline-flex items-center text-sm text-gray-700" do %>
-        <%= t("helpers.see_more") %>
-        <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
-          arrow_forward_ios
-        </span>
-      <% end %>
-    </div>
-  </div>
-  <div>
-    <ul class="mt-4">
-      <% @government_pages.each do |page| %>
-        <%= render "shared/page_item", page: page %>
+      <% @pages.each do |page| %>
+        <%= render "pages/page_item", page: page %>
       <% end %>
     </ul>
   </div>
