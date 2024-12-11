@@ -1,180 +1,110 @@
 return if Rails.env.production?
 
-PageUser.delete_all
-PagePost.delete_all
-User.delete_all
-PageKeyword.delete_all
-Page.delete_all
-Keyword.delete_all
-Category.delete_all
-
-# category
-[
-  { name: "はったつ", icon: "icon-hattatsu.png" },
-  { name: "せいしん", icon: "icon-seishin.png" },
-  { name: "め", icon: "icon-me.png" },
-  { name: "みみ", icon: "icon-mimi.png" },
-  { name: "てあし", icon: "icon-teashi.png" },
-  { name: "ないぶ", icon: "icon-naibu.png" }
-].each do |category|
-  Category.create(id: category[:id], name: category[:name], icon: category[:icon])
-end
-
-# keyword
-[
-  { name: "LD", category_id: Category.all[0].id, sequence: 1 },
-  { name: "ADHD", category_id: Category.all[0].id, sequence: 2 },
-  { name: "ASD", category_id: Category.all[0].id, sequence: 3 },
-  { name: "子供", category_id: Category.all[0].id, sequence: 4 },
-  { name: "大人", category_id: Category.all[0].id, sequence: 5 },
-  { name: "統合失調症", category_id: Category.all[1].id, sequence: 1 },
-  { name: "うつ病", category_id: Category.all[1].id, sequence: 2 },
-  { name: "双極性", category_id: Category.all[1].id, sequence: 3 },
-  { name: "睡眠", category_id: Category.all[1].id, sequence: 4 },
-  { name: "高次脳機能", category_id: Category.all[1].id, sequence: 5 },
-  { name: "知的", category_id: Category.all[1].id, sequence: 6 },
-  { name: "盲", category_id: Category.all[2].id, sequence: 1 },
-  { name: "弱視", category_id: Category.all[2].id, sequence: 2 },
-  { name: "め・先天性", category_id: Category.all[2].id, sequence: 3 },
-  { name: "め・中途", category_id: Category.all[2].id, sequence: 4 },
-  { name: "聾", category_id: Category.all[3].id, sequence: 1 },
-  { name: "難聴", category_id: Category.all[3].id, sequence: 2 },
-  { name: "みみ・先天性", category_id: Category.all[3].id, sequence: 3 },
-  { name: "みみ・中途", category_id: Category.all[3].id, sequence: 4 },
-  { name: "上肢", category_id: Category.all[4].id, sequence: 1 },
-  { name: "下肢", category_id: Category.all[4].id, sequence: 2 },
-  { name: "心疾患", category_id: Category.all[5].id, sequence: 1 },
-  { name: "アラジール症候群", category_id: Category.all[5].id, sequence: 2 },
-  { name: "ALS/SMA", category_id: Category.all[5].id, sequence: 3 },
-  { name: "声帯摘出", category_id: Category.all[5].id, sequence: 4 },
-  { name: "慢性疲労症候群", category_id: Category.all[5].id, sequence: 5 }
-].each do |keyword|
-  Keyword.create(id: keyword[:id], name: keyword[:name], category_id: keyword[:category_id], sequence: keyword[:sequence])
-end
-
-# page
-pages = [
-  {
-    genre: 1,
-    name: "日本視覚障害者団体連合",
-    status: 1,
-    is_verified: true,
-    bio: "当アカウントは見えない・見えにくい方とその家族、医療関係者、支援者の方々に情報を発信することを目的としています。\nhttp://nichimou.org/",
-    posts_count: 2,
-    reviews_count: 2,
-    keyword_ids: [ Keyword.all[11].id, Keyword.all[12].id, Keyword.all[13].id, Keyword.all[14].id ],
-    profile_image: "shikaku_dantai.jpg"
-  },
-  {
-    genre: 1,
-    name: "株式会社Ashirase",
-    status: 1,
-    is_verified: false,
-    bio: "スマートフォンアプリと靴につける振動インターフェースで視覚障害者の歩行をナビゲーションする『あしらせ』\nhttps://www.ashirase.com/",
-    posts_count: 1,
-    reviews_count: 0,
-    keyword_ids: [ Keyword.all[12].id, Keyword.all[13].id, Keyword.all[11].id, Keyword.all[14].id ],
-    profile_image: "ashirase.avif"
-  },
-  {
-    genre: 1,
-    name: "AIスーツケース",
-    status: 1,
-    is_verified: false,
-    bio: "視覚障害者の移動を支援する自律型ナビゲーションロボット『AIスーツケース』\nhttps://www.miraikan.jst.go.jp/research/AccessibilityLab/AIsuitcase/",
-    posts_count: 0,
-    reviews_count: 0,
-    keyword_ids: [ Keyword.all[11].id, Keyword.all[12].id, Keyword.all[13].id, Keyword.all[14].id ],
-    profile_image: "miraikan.png"
-  },
-  {
-    genre: 1,
-    name: "いちほまれ",
-    status: 1,
-    is_verified: false,
-    bio: "日本初 #ブラインドeレーサー いちほまれとして #eモータースポーツ の大会に参加中。色々な大会への出場機会をいただく中で #福井県 とこんな #技術士 #視覚障がい者 もいるんだと親近感と興味を持っていただけると嬉しいです！ #網膜色素変性症 #弱視 #白杖",
-    posts_count: 0,
-    reviews_count: 0,
-    keyword_ids: [ Keyword.all[12].id, Keyword.all[14].id ],
-    profile_image: "ichihomare.webp"
-  }
-]
-def create_pages(pages)
-  pages.each do |page|
-    p = Page.create(
-      genre: page[:genre],
-      name: page[:name],
-      status: page[:status],
-      is_verified: page[:is_verified],
-      bio: page[:bio],
-      posts_count: page[:posts_count],
-      reviews_count: page[:reviews_count],
-      profile_image: File.open(Rails.root.join("app/assets/images/#{page[:profile_image]}"))
-    )
-    page[:keyword_ids].each_with_index do |keyword_id, i|
-      p.page_keywords.create(page_id: p.id, keyword_id: keyword_id, sequence: i + 1)
-    end
-  end
-end
-create_pages(pages)
-create_pages(pages)
-create_pages(pages)
-
-
 # user
 [
   {
-    email: "test@example.com",
+    email: "admin@the-elements.jp",
     password: "password",
-    name: "test",
-    bio: "test",
-    background: "test",
+    name: "admin",
+    display_name: "admin",
+    is_admin: true,
+    bio: "admin",
+    background: "admin",
+    url: "",
     language: "ja",
-    email_verified: true,
-    session_token: "test",
-    followings_count: 1,
-    bookmarks_count: 1
+    session_token: "admin",
+    followings_count: 0,
+    bookmarks_count: 0
   }
 ].each do |user|
   User.create(
     email: user[:email],
     password: user[:password],
     name: user[:name],
+    display_name: user[:display_name],
+    is_admin: user[:is_admin],
     bio: user[:bio],
     background: user[:background],
+    url: user[:url],
     language: user[:language],
-    email_verified: user[:email_verified],
     session_token: user[:session_token],
     followings_count: user[:followings_count],
     bookmarks_count: user[:bookmarks_count]
   )
 end
 
-# page_user
+# category
 [
-  {
-    page_id: Page.all[0].id,
-    user_id: User.all[0].id,
-    role: 1
-  },
-  {
-    page_id: Page.all[1].id,
-    user_id: User.all[0].id,
-    role: 1
-  }
-].each do |page_user|
-  PageUser.create(
-    page_id: page_user[:page_id],
-    user_id: page_user[:user_id],
-    role: page_user[:role]
-  )
+  { name: "はったつ", icon: "icon-hattatsu.png", description: "LD、ADHD、ASD、子供、大人", sequence: 1 },
+  { name: "せいしん", icon: "icon-seishin.png", description: "統合失調症、うつ病、双極性、睡眠、高次脳機能、知的", sequence: 2 },
+  { name: "め", icon: "icon-me.png", description: "盲、弱視、先天性、中途", sequence: 3 },
+  { name: "みみ", icon: "icon-mimi.png", description: "聾、難聴、先天性、中途", sequence: 4 },
+  { name: "てあし", icon: "icon-teashi.png", description: "上肢、下肢", sequence: 5 },
+  { name: "ないぶ", icon: "icon-naibu.png", description: "心疾患、アラジール症候群、ALS/SMA、声帯摘出、慢性疲労症候群", sequence: 6 }
+].each do |category|
+  Category.create(id: category[:id], name: category[:name], icon: category[:icon], sequence: category[:sequence], description: category[:description])
 end
 
-# page_post
+# page
+pages = [
+  {
+    name: "日本視覚障害者団体連合",
+    category_id: Category.all[0].id,
+    is_verified: true,
+    bio: "当アカウントは見えない・見えにくい方とその家族、医療関係者、支援者の方々に情報を発信することを目的としています。\nhttp://nichimou.org/",
+    posts_count: 2,
+    reviews_count: 0,
+    profile_image: "shikaku_dantai.jpg"
+  },
+  {
+    name: "株式会社Ashirase",
+    category_id: Category.all[0].id,
+    is_verified: false,
+    bio: "スマートフォンアプリと靴につける振動インターフェースで視覚障害者の歩行をナビゲーションする『あしらせ』\nhttps://www.ashirase.com/",
+    posts_count: 1,
+    reviews_count: 0,
+    profile_image: "ashirase.avif"
+  },
+  {
+    name: "AIスーツケース",
+    category_id: Category.all[0].id,
+    is_verified: false,
+    bio: "視覚障害者の移動を支援する自律型ナビゲーションロボット『AIスーツケース』\nhttps://www.miraikan.jst.go.jp/research/AccessibilityLab/AIsuitcase/",
+    posts_count: 0,
+    reviews_count: 0,
+    profile_image: "miraikan.png"
+  },
+  {
+    name: "いちほまれ",
+    category_id: Category.all[0].id,
+    is_verified: false,
+    bio: "日本初 #ブラインドeレーサー いちほまれとして #eモータースポーツ の大会に参加中。色々な大会への出場機会をいただく中で #福井県 とこんな #技術士 #視覚障がい者 もいるんだと親近感と興味を持っていただけると嬉しいです！ #網膜色素変性症 #弱視 #白杖",
+    posts_count: 0,
+    reviews_count: 0,
+    profile_image: "ichihomare.webp"
+  }
+]
+def create_pages(pages)
+  pages.each do |page|
+    Page.create(
+      name: page[:name],
+      category_id: page[:category_id],
+      is_verified: page[:is_verified],
+      bio: page[:bio],
+      posts_count: page[:posts_count],
+      reviews_count: page[:reviews_count],
+      profile_image: File.open(Rails.root.join("app/assets/images/#{page[:profile_image]}"))
+    )
+  end
+end
+create_pages(pages)
+create_pages(pages)
+create_pages(pages)
+
+# # page_post
 [
   {
     page_id: Page.all[0].id,
-    status: 1,
     title: "視力の数字が同じでも人によって見え方は違って…",
     content: "鷹林さんは、生まれつき弱視でおられる。弱視と一言で言っても「視力の数字が同じでも人によって見え方は違って、その違いは障害者手帳の等級には表れない」と教えてもらった。\n例えば、鷹林さんは、眼球が痙攣したように動いたり揺れたりする「眼球振盪（がんきゅうしんとう）」という症状をお持ちで、文字が大きくないと見えないだけではなく、「馬」など4本も5本も線があるようなゴチャゴチャした文字を読むことも難しい。
       \n「墨字（すみじ）」という言葉をご存じだろうか？視覚障害者が使用する「点字」に対して、点字ではない文字のことを「墨字」と言う。
@@ -186,7 +116,6 @@ end
   },
   {
     page_id: Page.all[0].id,
-    status: 1,
     title: "視界は常に真っ白い状態だ…",
     content: "小川さんは先天性の弱視で、右目は小学校の頃に失明した。濃淡の差はあれど視界は常に真っ白い状態だ。
       \n左目は「弱視故のちょっとした不注意だったのか」、36歳の時にロッカーに目をぶつけたことで目の強膜（眼球の外側をつくるいわゆる「しろ目」）が破裂した。角膜移植で一時持ち直すも結局、左目も失明した。視界の色は「（右目同様に）真っ白な時もあれば、真っ黄色だったり赤みがかったりする時もあり」、失明した当初はあった明暗やシルエットは今や失われた。
@@ -200,7 +129,6 @@ end
   },
   {
     page_id: Page.all[1].id,
-    status: 1,
     title: "自動運転エンジニアから視覚障害への挑戦",
     content: "千野さんは、スマートフォンアプリと靴につける振動インターフェースで視覚障害者の歩行をナビゲーションする『あしらせ』を開発・販売する株式会社Ashiraseの代表をされている。同社は、日本を代表する自動車メーカーであるHondaの新事業創出プログラム「IGNITION（イグニッション）」発のベンチャー企業第1号である。
       \nそのHondaで自動運転の研究開発に携わっていた千野さんが、なぜ視覚障害者の歩行支援をするベンチャー企業を立ち上げるに至ったのか。
@@ -214,7 +142,6 @@ end
   PagePost.create(
     id: page_post[:id],
     page_id: page_post[:page_id],
-    status: page_post[:status],
     title: page_post[:title],
     content: page_post[:content]
   )
@@ -223,7 +150,6 @@ end
 # official_post
 official_posts = [
   {
-    status: 1,
     title: "【横断 #21】キヤスクで描く誰もが好きな服を着られる世界",
     content: "障害や病気があって服をそのまま着れなかったり着づらかったりする方々がいる。でも、
       \n　大好きなアーティストのツアーTシャツを着たい。
@@ -233,7 +159,6 @@ official_posts = [
     "
   },
   {
-    status: 1,
     title: "【こころ #78】障害児のケアと生活と仕事をまわすために",
     content: "障害のあるお子さんのケアと、生活、そして仕事のバランスをとることは容易ではない。
       \n三良さんにとって、娘さんが小学校3年生で精神疾患を発症した当時、二人目の娘さんが生まれたばかりだった。生活面では、日々自宅で長女をケアする中で、まだ赤ん坊の次女は、両親に預けざるを得ず、愛情を注げない。仕事面でも、長女の面倒を見ながら”決められた時間に決められた場所に行く”類の仕事につけるのか。両親も次女の世話のために仕事を調整してくれている一方で、今後保育園に入れるには自分が働いている必要もある。
@@ -241,7 +166,6 @@ official_posts = [
     "
   },
   {
-    status: 1,
     title: "【こころ #77】子供でも精神疾患になることを知ってほしい",
     content: "あくまで一般的な認識として、統合失調症の発症年齢は10代後半から30代頃がピーク、平均発症年齢は男性では20代半ば前後、女性ではそれよりやや後の年齢と言われる。
       \nでは、小学校3年生（8-9歳）の女の子が、ある日を境に、「友達が家にカメラをしかけている」「お母さんが誰かにさらわれる」といった妄想を口にし始め、ソファから立てない、お風呂に入れない、着替えられない、眠れない、食べても味がしないといった症状が出始めたとしたら、、、
@@ -249,7 +173,6 @@ official_posts = [
     "
   },
   {
-    status: 1,
     title: "【けつえき #4】脳卒中患者のために保険外に挑む理学療法士",
     content: "脳卒中（脳血管疾患）は、国内の患者数が174.2万人と推計され（厚生労働省「令和2年患者調査」）、日本でも世界でも4人に1人程度が経験するとも言われる。
       \n一般的に、手足の麻痺や言語障害など障害が残るイメージも強いが、脳卒中の発症直後からのリハビリテーションなどを通じて、職場復帰など回復する場合も少なくない。
@@ -259,7 +182,6 @@ official_posts = [
     "
   },
   {
-    status: 1,
     title: "【あし #24 / て #6 / しんけい #25】息子の介護を、他から学び、他に伝える",
     content: "大きな交通事故に遭って意識が半年以上戻らない息子の樹希さんに寄り添い続け、その後の回復過程でも辛い思いをした樹希母さん。その途中で何かしら外に向けて支援を求めることはしなかったのかと聞くと、リアルな答えが返ってきた。
       \n「様々なサポートや相談室や家族会などもあるのですが、その瞬間は目の前の息子を見ることに精一杯で、コンタクトを取るなど行動して相談までするエネルギーがなく、そこまで行きつけないんです」
@@ -271,7 +193,6 @@ official_posts = [
 def create_official_posts(official_posts)
   official_posts.each do |official_post|
     OfficialPost.create(
-      status: official_post[:status],
       title: official_post[:title],
       content: official_post[:content]
     )
