@@ -11,7 +11,7 @@
           <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
-          <span class="ms-1 text-lg font-medium md:ms-2"><%= @category.name %></span>
+          <span class="font-medium md:ms-2"><%= @category.name %></span>
         </div>
       </li>
     </ol>
@@ -43,7 +43,7 @@
       <%= t("helpers.pages.title") %>
     </h2>
     <div class="ml-auto">
-      <%= link_to pages_path(genre: 1, category_id: @category.id), class: "block px-2 py-1 border border-gray-400 rounded inline-flex items-center text-sm text-gray-700" do %>
+      <%= link_to pages_path(category_id: @category.id), class: "block px-2 py-1 border border-gray-400 rounded inline-flex items-center text-sm text-gray-700" do %>
         <%= t("helpers.see_more") %>
         <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
           arrow_forward_ios
