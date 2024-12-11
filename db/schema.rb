@@ -44,18 +44,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
+    t.text "description", null: false
     t.string "icon", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "keywords", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.string "name", null: false
     t.integer "sequence", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_keywords_on_category_id"
   end
 
   create_table "official_post_bookmarks", force: :cascade do |t|
@@ -69,7 +62,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
   end
 
   create_table "official_posts", force: :cascade do |t|
-    t.integer "status", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -86,15 +78,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.index ["user_id"], name: "index_page_followers_on_user_id"
   end
 
-  create_table "page_keywords", force: :cascade do |t|
+  create_table "page_managers", force: :cascade do |t|
     t.bigint "page_id", null: false
-    t.bigint "keyword_id", null: false
-    t.integer "sequence", null: false
+    t.bigint "user_id", null: false
+    t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["keyword_id"], name: "index_page_keywords_on_keyword_id"
-    t.index ["page_id", "keyword_id"], name: "index_page_keywords_on_page_id_and_keyword_id", unique: true
-    t.index ["page_id"], name: "index_page_keywords_on_page_id"
+    t.index ["page_id", "user_id"], name: "index_page_managers_on_page_id_and_user_id", unique: true
+    t.index ["page_id"], name: "index_page_managers_on_page_id"
+    t.index ["user_id"], name: "index_page_managers_on_user_id"
   end
 
   create_table "page_post_bookmarks", force: :cascade do |t|
@@ -109,7 +101,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
 
   create_table "page_posts", force: :cascade do |t|
     t.bigint "page_id", null: false
-    t.integer "status", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -127,61 +118,53 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.index ["user_id"], name: "index_page_reviews_on_user_id"
   end
 
-  create_table "page_users", force: :cascade do |t|
-    t.bigint "page_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "role", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["page_id", "user_id"], name: "index_page_users_on_page_id_and_user_id", unique: true
-    t.index ["page_id"], name: "index_page_users_on_page_id"
-    t.index ["user_id"], name: "index_page_users_on_user_id"
-  end
-
   create_table "pages", force: :cascade do |t|
-    t.integer "genre", null: false
+    t.bigint "category_id", null: false
     t.string "name", null: false
-    t.integer "status", null: false
     t.boolean "is_verified", default: false, null: false
     t.text "bio", null: false
     t.integer "posts_count", default: 0, null: false
     t.integer "reviews_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genre"], name: "index_pages_on_genre"
+    t.datetime "deleted_at"
+    t.index ["category_id"], name: "index_pages_on_category_id"
+    t.index ["deleted_at"], name: "index_pages_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.text "bio", null: false
-    t.text "background", null: false
-    t.string "language", null: false
-    t.boolean "email_verified", default: false, null: false
     t.string "session_token", null: false
+    t.boolean "is_admin", default: false, null: false
+    t.string "name", null: false
+    t.string "display_name", null: false
+    t.string "language", null: false
+    t.text "background", null: false
+    t.text "bio", null: false
+    t.string "url", null: false
     t.integer "followings_count", default: 0, null: false
     t.integer "bookmarks_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "keywords", "categories"
   add_foreign_key "official_post_bookmarks", "official_posts"
   add_foreign_key "official_post_bookmarks", "users"
   add_foreign_key "page_followers", "pages"
   add_foreign_key "page_followers", "users"
-  add_foreign_key "page_keywords", "keywords"
-  add_foreign_key "page_keywords", "pages"
+  add_foreign_key "page_managers", "pages"
+  add_foreign_key "page_managers", "users"
   add_foreign_key "page_post_bookmarks", "page_posts"
   add_foreign_key "page_post_bookmarks", "users"
   add_foreign_key "page_posts", "pages"
   add_foreign_key "page_reviews", "pages"
   add_foreign_key "page_reviews", "users"
-  add_foreign_key "page_users", "pages"
-  add_foreign_key "page_users", "users"
+  add_foreign_key "pages", "categories"
 end
