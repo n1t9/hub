@@ -7,12 +7,12 @@
     <% end %>
   </h2>
   <div class="w-full flex flex-col gap-2">
-    <%= render "shared/category_item", category: @categories[0] %>
-    <%= render "shared/category_item", category: @categories[1] %>
-    <%= render "shared/category_item", category: @categories[2] %>
-    <%= render "shared/category_item", category: @categories[3] %>
-    <%= render "shared/category_item", category: @categories[4] %>
-    <%= render "shared/category_item", category: @categories[5] %>
+    <%= render "categories/category_item", category: @categories[0] %>
+    <%= render "categories/category_item", category: @categories[1] %>
+    <%= render "categories/category_item", category: @categories[2] %>
+    <%= render "categories/category_item", category: @categories[3] %>
+    <%= render "categories/category_item", category: @categories[4] %>
+    <%= render "categories/category_item", category: @categories[5] %>
   </div>
 </div>
 <div class="px-4 pt-4 pb-2 bg-white">
@@ -21,7 +21,7 @@
   </h2>
   <ul class="mt-4">
     <% @page_posts.each do |post| %>
-      <%= render "shared/page_post_item", post: post, page_posts: @page_posts %>
+      <%= render "page_posts/page_post_item", post: post, page_posts: @page_posts %>
     <% end %>
   </ul>
 </div>
