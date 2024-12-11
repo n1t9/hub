@@ -15,6 +15,7 @@ gem "image_processing", "~> 1.13"
 gem "bcrypt"
 gem "kaminari"
 gem "rails_autolink"
+gem "paranoia"
 
 gem "aws-sdk-s3", require: false
 
