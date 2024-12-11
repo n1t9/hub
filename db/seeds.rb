@@ -51,7 +51,8 @@ pages = [
     name: "日本視覚障害者団体連合",
     category_id: Category.all[0].id,
     is_verified: true,
-    bio: "当アカウントは見えない・見えにくい方とその家族、医療関係者、支援者の方々に情報を発信することを目的としています。\nhttp://nichimou.org/",
+    bio: "当アカウントは見えない・見えにくい方とその家族、医療関係者、支援者の方々に情報を発信することを目的としています。",
+    url: "http://nichimou.org/",
     posts_count: 2,
     reviews_count: 0,
     profile_image: "shikaku_dantai.jpg"
@@ -60,7 +61,8 @@ pages = [
     name: "株式会社Ashirase",
     category_id: Category.all[0].id,
     is_verified: false,
-    bio: "スマートフォンアプリと靴につける振動インターフェースで視覚障害者の歩行をナビゲーションする『あしらせ』\nhttps://www.ashirase.com/",
+    bio: "スマートフォンアプリと靴につける振動インターフェースで視覚障害者の歩行をナビゲーションする『あしらせ』",
+    url: "https://www.ashirase.com/",
     posts_count: 1,
     reviews_count: 0,
     profile_image: "ashirase.avif"
@@ -69,7 +71,8 @@ pages = [
     name: "AIスーツケース",
     category_id: Category.all[0].id,
     is_verified: false,
-    bio: "視覚障害者の移動を支援する自律型ナビゲーションロボット『AIスーツケース』\nhttps://www.miraikan.jst.go.jp/research/AccessibilityLab/AIsuitcase/",
+    bio: "視覚障害者の移動を支援する自律型ナビゲーションロボット『AIスーツケース』",
+    url: "https://www.miraikan.jst.go.jp/research/AccessibilityLab/AIsuitcase/",
     posts_count: 0,
     reviews_count: 0,
     profile_image: "miraikan.png"
@@ -79,6 +82,7 @@ pages = [
     category_id: Category.all[0].id,
     is_verified: false,
     bio: "日本初 #ブラインドeレーサー いちほまれとして #eモータースポーツ の大会に参加中。色々な大会への出場機会をいただく中で #福井県 とこんな #技術士 #視覚障がい者 もいるんだと親近感と興味を持っていただけると嬉しいです！ #網膜色素変性症 #弱視 #白杖",
+    url: "",
     posts_count: 0,
     reviews_count: 0,
     profile_image: "ichihomare.webp"
@@ -91,6 +95,7 @@ def create_pages(pages)
       category_id: page[:category_id],
       is_verified: page[:is_verified],
       bio: page[:bio],
+      url: page[:url],
       posts_count: page[:posts_count],
       reviews_count: page[:reviews_count],
       profile_image: File.open(Rails.root.join("app/assets/images/#{page[:profile_image]}"))
