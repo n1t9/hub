@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_paranoid
   has_secure_password
   has_one_attached :profile_image
   has_many :page_users, dependent: :destroy
@@ -9,29 +10,26 @@ class User < ApplicationRecord
   has_many :official_post_bookmarks, dependent: :destroy
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
-  validates :password_digest, presence: true
+  validates :password, length: { minimum: 8 }, allow_blank: true
   validates :name, length: { maximum: 20 }
   validates :background, length: { maximum: 100 }
   validates :bio, length: { maximum: 160 }
 
-  def initialize(attributes = {})
-    super
-    self.session_token = SecureRandom.alphanumeric(16)
-    self.name = ""
-    self.bio = ""
-    self.background = ""
-    self.language = "ja"
-    self.email_verified = false
-    self.followings_count = 0
-    self.bookmarks_count = 0
-  end
-
-  def send_verification_email
-    # TODO
+  before_create do
+    self.name ||= ""
+    self.display_name ||= ""
+    self.is_admin ||= false
+    self.bio ||= ""
+    self.background ||= ""
+    self.url ||= ""
+    self.language ||= "ja"
+    self.session_token ||= SecureRandom.alphanumeric(16)
+    self.followings_count ||= 0
+    self.bookmarks_count ||= 0
   end
 
   def setup?
-    name.present? && background.present?
+    name.present?
   end
 
   def display_profile_image
@@ -42,8 +40,8 @@ class User < ApplicationRecord
     end
   end
 
-  def page_editor?(page)
-    page_users.find_by(page_id: page.id)
+  def page_manager?(page)
+    page_managers.find_by(page_id: page.id)
   end
 
   def page_follower?(page)
