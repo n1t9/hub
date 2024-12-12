@@ -11,7 +11,6 @@ class SignupsController < ApplicationController
     @user = User.new(signup_params)
     if @user.save
       create_session(@user)
-      @user.send_verification_email
       redirect_to signup_setup_path
     else
       flash[:error] = @user.errors.full_messages.join(", ")

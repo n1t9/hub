@@ -1,15 +1,15 @@
 <% content_for :title, t("helpers.signup.title") %>
 <% content_for :skip_menu, true %>
-<div class="container mx-auto px-4 py-3 bg-white">
+<div class="container mx-auto px-4 pt-3 pb-6 bg-white">
   <%= form_with model: @user, url: signup_path, local: true, class: "grid grid-cols-1 gap-5", data: { controller: "signup" } do |f| %>
     <div>
       <%= f.label :email %>
-      <%= f.email_field :email, class: "w-full bg-gray-100 rounded border p-1", data: { action: "blur->signup#validateEmail", signup_target: "email" } %>
+      <%= f.email_field :email, class: "w-full rounded border mt-1 p-2", required: true, placeholder: "mail@example.com" %>
       <div data-signup-target="emailError" class="text-sm text-red-500 hidden"><%= t("helpers.signup.email_error") %></div>
     </div>
     <div>
       <%= f.label :password %>
-      <%= f.password_field :password, class: "w-full bg-gray-100 rounded border p-1", data: { action: "blur->signup#validatePassword", signup_target: "password" } %>
+      <%= f.password_field :password, class: "w-full rounded border mt-1 p-2", required: true, minlength: 8, maxlength: 20 %>
       <div data-signup-target="passwordError" class="text-sm text-red-500 hidden"><%= t("helpers.signup.password_error") %></div>
     </div>
     <div>
@@ -18,10 +18,10 @@
       </span>
     </div>
     <div>
-      <%= f.submit t("helpers.signup.submit"), class: "w-full bg-gray-300 py-2", data: { signup_target: "submit" }, disabled: true %>
+      <%= f.submit t("helpers.signup.submit"), class: "w-full bg-blue-600 text-white py-2 rounded cursor-pointer" %>
     </div>
   <% end %>
-  <div>
+  <div class="mt-2">
     <%= link_to t("helpers.signup.signin"), signin_path, class: "text-blue underline" %>
   </div>
 </div>

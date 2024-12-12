@@ -116,16 +116,19 @@ ja:
         too_long: は%{count}文字以内で入力してください
         too_short: は%{count}文字以上で入力してください
         wrong_length: は%{count}文字で入力してください
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
     template:
       body: 次の項目を確認してください
       header: "%{model}に%{count}個のエラーが発生しました"
     attributes:
       user:
-        name: 表示されるお名前
+        name: 氏名
+        display_name: 表示名
         email: メールアドレス
         password: パスワード
         background: ご登録の背景(公開されません)
         bio: 自己紹介文
+        url: URL
       page:
         name: ページ名
         bio: ページの説明
@@ -137,6 +140,7 @@ ja:
       next: "次へ"
       truncate: "..."
   helpers:
+    optional: 任意入力
     separator: 、
     time_ago: "前"
     see_more: "もっと見る"
