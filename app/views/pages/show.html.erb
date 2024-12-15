@@ -188,14 +188,8 @@
     </div>
     <div>
       <ul class="mt-4">
-        <% if @page_reviews.present? %>
-          <% @page_reviews.each do |page_review| %>
-            <%= render "pages/reviews/page_review_item", page_review: page_review, page_reviews: @page_reviews %>
-          <% end %>
-        <% else %>
-          <div class="my-3">
-            <%= t("helpers.page_entries_info.one_page.display_entries.zero") %>
-          </div>
+        <% @page_reviews.each do |page_review| %>
+          <%= render "pages/reviews/page_review_item", page_review: page_review, page_reviews: @page_reviews %>
         <% end %>
       </ul>
       <div>
