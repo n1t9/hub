@@ -59,4 +59,8 @@ class User < ApplicationRecord
   def official_post_bookmark?(official_post)
     official_post_bookmarks.find_by(official_post_id: official_post.id)
   end
+
+  def page_review(page)
+    page.page_reviews.find_by(user_id: id)
+  end
 end
