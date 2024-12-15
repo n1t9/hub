@@ -11,7 +11,7 @@
   </div>
   <div class="mt-4">
     <h2 class="text-xl font-bold flex items-center">
-      <%= @user.name %>
+      <%= @user.display_name %>
     </h2>
     <div class="mt-2 text-sm text-gray-500 break-all"><%= simple_format(auto_link(@user.bio, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
     <% if @user.url.present? %>

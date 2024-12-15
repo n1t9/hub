@@ -8,7 +8,7 @@
   <%= form_with model: current_user, url: settings_path, method: :put do |f| %>
     <div class="my-4">
       <%= f.label :name, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
-      <%= f.text_field :name, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 20 %>
+      <%= f.text_field :name, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 20, required: true %>
     </div>
     <div class="my-4">
       <%= f.label :display_name, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
@@ -28,7 +28,7 @@
     </div>
     <div class="my-4">
       <%= f.label :bio, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
-      <%= f.text_area :bio, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 160 %>
+      <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 160, placeholder: t("helpers.setup.bio"), required: true %>
     </div>
     <div class="my-4">
       <%= f.submit t("helpers.submit.update"), class: "bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer" %>

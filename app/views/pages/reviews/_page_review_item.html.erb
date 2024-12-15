@@ -1,0 +1,18 @@
+<li class="pt-2 pb-4 border-gray-300 <%= "border-b" unless page_review == page_reviews.last %>">
+  <div class="mt-2 flex text-sm text-gray-700">
+    <%= link_to user_path(page_review.user), class: "flex" do %>
+      <span>
+        <%= image_tag page_review.user.display_profile_image, class: "w-5 h-5 rounded" %>
+      </span>
+      <span class="ml-2">
+        <%= page_review.user.display_name %>
+      </span>
+    <% end %>
+    <span class="ml-2">
+      <%= time_ago_in_words(page_review.updated_at) %><%= t("helpers.time_ago") %>
+    </span>
+  </div>
+  <div>
+    <p class="mt-2 text-sm break-all"><%= page_review.content %></p>
+  </div>
+</li>

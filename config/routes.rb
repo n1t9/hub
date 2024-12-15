@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     scope module: :pages do
       resource :follow, only: %i[create destroy]
       resource :profile_image, only: %i[show create]
+      resources :reviews, only: %i[new create edit update destroy]
     end
   end
   resources :page_posts, only: %i[index show new create edit update destroy] do

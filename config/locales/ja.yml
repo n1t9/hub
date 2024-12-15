@@ -133,6 +133,8 @@ ja:
       page:
         name: ページ名
         bio: ページの説明
+      page_review:
+        content: 口コミ
   views:
     pagination:
       first: "最初"
@@ -151,6 +153,7 @@ ja:
     submit:
       create: 登録する
       update: 更新する
+      post: 投稿する
     page_entries_info:
       one_page:
         display_entries:
@@ -198,6 +201,11 @@ ja:
       reviews: 口コミ
       followers: フォロワー
       write_review: 口コミを書く
+      edit_review: 口コミを編集する
+      view_more_reviews: 口コミをもっと見る
+      view_more_posts: ポストをもっと見る
+    page_reviews:
+      content: 口コミ内容を入力してください
     setting:
       title: 設定
       change_image: 画像を変更する

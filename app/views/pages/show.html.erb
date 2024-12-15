@@ -78,11 +78,24 @@
     <div>
       <ul class="mt-4">
         <% content_for :skip_keywords, true %>
-        <% @page_posts.each do |post| %>
-          <%= render "page_posts/page_post_item", post: post, page_posts: @page_posts %>
+        <% if @page_posts.present? %>
+          <% @page_posts.each do |post| %>
+            <%= render "page_posts/page_post_item", post: post, page_posts: @page_posts %>
+          <% end %>
+        <% else %>
+          <div class="my-3">
+            <%= t("helpers.page_entries_info.one_page.display_entries.zero") %>
+          </div>
         <% end %>
       </ul>
     </div>
+    <% if @page_posts.present? %>
+      <div class="mt-4">
+        <%= link_to page_path(@page.id, tab: "posts"), class: "w-full py-2 px-4 border rounded text-center cursor-pointer block" do %>
+          <%= t("helpers.pages.view_more_posts") %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="mt-8 p-4 bg-white">
     <div class="flex">
@@ -91,8 +104,14 @@
       </h2>
       <div class="ml-auto">
         <% if current_user %>
-          <%= button_to nil, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black" do %>
-            <%= t("helpers.pages.write_review") %>
+          <% if current_user.page_review(@page) %>
+            <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+              <%= t("helpers.pages.edit_review") %>
+            <% end %>
+          <% else %>
+            <%= link_to new_page_review_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+              <%= t("helpers.pages.write_review") %>
+            <% end %>
           <% end %>
         <% else %>
           <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
@@ -103,11 +122,24 @@
     </div>
     <div>
       <ul class="mt-4">
-        <% @page_reviews.each do |review| %>
-          <%= render "shared/page_review_item", review: review %>
+        <% if @page_reviews.present? %>
+          <% @page_reviews.each do |page_review| %>
+            <%= render "pages/reviews/page_review_item", page_review: page_review, page_reviews: @page_reviews %>
+          <% end %>
+        <% else %>
+          <div class="my-3">
+            <%= t("helpers.page_entries_info.one_page.display_entries.zero") %>
+          </div>
         <% end %>
       </ul>
     </div>
+    <% if @page_reviews.present? %>
+      <div class="mt-4">
+        <%= link_to page_path(@page.id, tab: "reviews"), class: "w-full py-2 px-4 border rounded text-center cursor-pointer block" do %>
+          <%= t("helpers.pages.view_more_reviews") %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% elsif @tab == "posts" %>
   <div class="p-4 bg-white">
@@ -122,7 +154,7 @@
     <div>
       <ul class="mt-4">
         <% @page_posts.each do |post| %>
-          <%= render "shared/page_post_item", post: post, page_posts: @page_posts %>
+          <%= render "page_posts/page_post_item", post: post, page_posts: @page_posts %>
         <% end %>
       </ul>
     </div>
@@ -135,8 +167,14 @@
       </h2>
       <div class="ml-auto">
         <% if current_user %>
-          <%= button_to nil, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black" do %>
-            <%= t("helpers.pages.write_review") %>
+          <% if current_user.page_review(@page) %>
+            <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+              <%= t("helpers.pages.edit_review") %>
+            <% end %>
+          <% else %>
+            <%= link_to new_page_review_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+              <%= t("helpers.pages.write_review") %>
+            <% end %>
           <% end %>
         <% else %>
           <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
@@ -145,14 +183,24 @@
         <% end %>
       </div>
     </div>
-    <div class="mt-4">
+    <div class="mt-2">
       <%= page_entries_info @page_reviews %>
     </div>
     <div>
       <ul class="mt-4">
-        <% @page_reviews.each do |review| %>
+        <% if @page_reviews.present? %>
+          <% @page_reviews.each do |page_review| %>
+            <%= render "pages/reviews/page_review_item", page_review: page_review, page_reviews: @page_reviews %>
+          <% end %>
+        <% else %>
+          <div class="my-3">
+            <%= t("helpers.page_entries_info.one_page.display_entries.zero") %>
+          </div>
         <% end %>
       </ul>
+      <div>
+        <%= paginate @page_reviews %>
+      </div>
     </div>
   </div>
 <% end %>
