@@ -140,7 +140,7 @@ export class HubStack extends cdk.Stack {
         S3_BUCKET: s3.bucketName,
         IMAGE_TAG: imageTag,
         RAILS_ENV: 'production',
-        SECRET_KEY_BASE: '0cbdb6e89425dc3fff37d132b4f172aff18c01efe884c805e62246a3342c4d91'
+        SECRET_KEY_BASE: '0cbdb6e89425dc3fff37d132b4f172aff18c01efe884c805e62246a3342c4d91',
       },
       portMappings: [
         {
