@@ -127,6 +127,7 @@ ja:
         email: メールアドレス
         password: パスワード
         background: ご登録の背景(公開されません)
+        profile_image: プロフィール画像
         bio: 自己紹介文
         url: URL
       page:
@@ -183,6 +184,7 @@ ja:
     setup:
       title: 初期設定
       background_detail: バックグラウンド等をご記入ください、例）○○障害の当事者、家族、研究開発者など
+      bio: はじめまして、よろしくお願いします。
       submit: 登録する
     pages:
       title: ページ

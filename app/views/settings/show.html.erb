@@ -11,9 +11,16 @@
       <%= f.text_field :name, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 20 %>
     </div>
     <div class="my-4">
+      <%= f.label :display_name, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
+      <%= f.text_field :display_name, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 20 %>
+    </div>
+    <div class="my-4">
+      <%= f.label :url, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
+      <%= f.text_field :url, class: "block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight", maxlength: 255 %>
+    </div>
+    <div class="my-4">
       <%= f.label :email, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
       <%= f.email_field :email, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight" %>
-      <span class="text-sm text-gray-500"><%= current_user.email_verified? ? t("helpers.setting.email_verified") : t("helpers.setting.email_not_verified") %></span>
     </div>
     <div class="my-4">
       <%= f.label :password, class: "block tracking-wide text-gray-700 font-bold mb-2" %>

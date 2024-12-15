@@ -40,6 +40,10 @@ class User < ApplicationRecord
     end
   end
 
+  def profile_image_resized
+    profile_image.variant(resize_to_fill: [ 64, 64 ]).processed
+  end
+
   def page_manager?(page)
     page_managers.find_by(page_id: page.id)
   end
