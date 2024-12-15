@@ -3,7 +3,7 @@
     <div>
       <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover" %>
     </div>
-    <% if current_user&.page_editor?(@page) %>
+    <% if current_user&.page_manager?(@page) %>
       <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-black" do %>
         <%= t("helpers.pages.edit") %>
       <% end %>

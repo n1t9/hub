@@ -2,8 +2,8 @@ class User < ApplicationRecord
   acts_as_paranoid
   has_secure_password
   has_one_attached :profile_image
-  has_many :page_users, dependent: :destroy
-  has_many :pages, through: :page_users, dependent: :destroy
+  has_many :page_managers, dependent: :destroy
+  has_many :pages, through: :page_managers, dependent: :destroy
   has_many :page_followers, dependent: :destroy
   has_many :following_pages, through: :page_followers, source: :page, dependent: :destroy
   has_many :page_post_bookmarks, dependent: :destroy

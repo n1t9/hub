@@ -30,7 +30,7 @@
     <div>
       <%= f.label :bio %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
-      <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 255, placeholder: t("helpers.setup.bio") %>
+      <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 160, placeholder: t("helpers.setup.bio") %>
     </div>
     <div>
       <%= f.submit t("helpers.setup.submit"), class: "w-full bg-blue-500 text-white font-bold py-2 px-4 rounded text-center" %>

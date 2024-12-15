@@ -203,3 +203,5 @@ ja:
       change_image: 画像を変更する
       email_verified: メールアドレスは確認済みです。
       email_not_verified: メールアドレスは未確認です。
+    user:
+      edit_profile: プロフィールを編集
