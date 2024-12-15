@@ -16,8 +16,9 @@ class Signups::SetupsController < ApplicationController
   private
 
   def setup_params
-    params.require(:user).permit(:name, :display_name, :url, :background).tap do |p|
+    params.require(:user).permit(:name, :display_name, :url, :profile_image, :background, :bio).tap do |p|
       p[:display_name] = p[:name] if p[:display_name].blank?
+      p[:bio] = t("helpers.setup.bio") if p[:bio].blank?
     end
   end
 end

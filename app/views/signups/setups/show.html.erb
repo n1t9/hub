@@ -13,6 +13,11 @@
       <%= f.text_field :display_name, class: "w-full rounded border mt-1 p-2", required: false, maxlength: 20 %>
     </div>
     <div>
+      <%= f.label :profile_image %>
+      <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
+      <%= f.file_field :profile_image, class: "mt-1 block w-full text-sm cursor-pointer" %>
+    </div>
+    <div>
       <%= f.label :url %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
       <%= f.text_field :url, class: "w-full rounded border mt-1 p-2", required: false, maxlength: 255 %>
@@ -21,6 +26,11 @@
       <%= f.label :background, class: "block" %>
       <span class="text-sm text-gray-500"><%= t("helpers.setup.background_detail") %></span>
       <%= f.text_area :background, class: "w-full rounded border mt-1 p-2", required: true, rows: 3, maxlength: 255 %>
+    </div>
+    <div>
+      <%= f.label :bio %>
+      <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
+      <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 255, placeholder: t("helpers.setup.bio") %>
     </div>
     <div>
       <%= f.submit t("helpers.setup.submit"), class: "w-full bg-blue-500 text-white font-bold py-2 px-4 rounded text-center" %>
