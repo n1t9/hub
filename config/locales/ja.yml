@@ -213,3 +213,5 @@ ja:
       email_not_verified: メールアドレスは未確認です。
     user:
       edit_profile: プロフィールを編集
+    following_pages:
+      title: フォロー中のページ
