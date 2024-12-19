@@ -14,7 +14,7 @@
         <%= link_to user_path(current_user.id) do %>
           <div class="flex items-center">
             <div class="mr-4">
-              <%= image_tag current_user.display_profile_image, class: "w-10 h-10 rounded-full border border-gray-300 object-cover" %>
+              <%= image_tag current_user.display_profile_image, class: "w-10 h-10 rounded-full object-cover" %>
             </div>
             <div>
               <h5 class="text-xl font-bold tracking-tight"><%= current_user.display_name %></h5>

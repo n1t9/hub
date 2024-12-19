@@ -4,21 +4,21 @@
       <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover" %>
     </div>
     <% if current_user&.page_manager?(@page) %>
-      <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-black" do %>
+      <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
         <%= t("helpers.pages.edit") %>
       <% end %>
     <% else %>
       <% if current_user&.page_follower?(@page) %>
-        <%= button_to page_follow_path(@page.id), method: :delete, class: "p-3 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.unfollow_confirm") } do %>
+        <%= button_to page_follow_path(@page.id), method: :delete, class: "p-3 flex-item text-sm rounded border border-gray-500", data: { turbo_confirm: t("flash.unfollow_confirm") } do %>
           <%= t("helpers.pages.following") %>
         <% end %>
       <% else %>
         <% if current_user %>
-          <%= button_to page_follow_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-black" do %>
+          <%= button_to page_follow_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
             <%= t("helpers.pages.follow") %>
           <% end %>
         <% else %>
-          <%= button_to signin_path, method: :get, class: "p-3 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
+          <%= button_to signin_path, method: :get, class: "p-3 flex-item text-sm rounded border border-gray-500", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
             <%= t("helpers.pages.follow") %>
           <% end %>
         <% end %>
@@ -90,8 +90,8 @@
       </ul>
     </div>
     <% if @page_posts.present? %>
-      <div class="mt-4">
-        <%= link_to page_path(@page.id, tab: "posts"), class: "w-full py-2 px-4 border rounded text-center cursor-pointer block" do %>
+      <div class="mt-4 mb-2">
+        <%= link_to page_path(@page.id, tab: "posts"), class: "mx-4 py-2 px-4 border border-gray-500 rounded text-center cursor-pointer block" do %>
           <%= t("helpers.pages.view_more_posts") %>
         <% end %>
       </div>
@@ -105,16 +105,16 @@
       <div class="ml-auto">
         <% if current_user %>
           <% if current_user.page_review(@page) %>
-            <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+            <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
               <%= t("helpers.pages.edit_review") %>
             <% end %>
           <% else %>
-            <%= link_to new_page_review_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+            <%= link_to new_page_review_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
               <%= t("helpers.pages.write_review") %>
             <% end %>
           <% end %>
         <% else %>
-          <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
+          <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
             <%= t("helpers.pages.write_review") %>
           <% end %>
         <% end %>
@@ -134,8 +134,8 @@
       </ul>
     </div>
     <% if @page_reviews.present? %>
-      <div class="mt-4">
-        <%= link_to page_path(@page.id, tab: "reviews"), class: "w-full py-2 px-4 border rounded text-center cursor-pointer block" do %>
+      <div class="mt-4 mb-2">
+        <%= link_to page_path(@page.id, tab: "reviews"), class: "mx-4 py-2 px-4 border border-gray-500 rounded text-center cursor-pointer block" do %>
           <%= t("helpers.pages.view_more_reviews") %>
         <% end %>
       </div>
@@ -168,16 +168,16 @@
       <div class="ml-auto">
         <% if current_user %>
           <% if current_user.page_review(@page) %>
-            <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+            <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
               <%= t("helpers.pages.edit_review") %>
             <% end %>
           <% else %>
-            <%= link_to new_page_review_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black block" do %>
+            <%= link_to new_page_review_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
               <%= t("helpers.pages.write_review") %>
             <% end %>
           <% end %>
         <% else %>
-          <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-black", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
+          <%= button_to signin_path, method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500", data: { turbo_confirm: t("flash.need_login_confirm") } do %>
             <%= t("helpers.pages.write_review") %>
           <% end %>
         <% end %>
