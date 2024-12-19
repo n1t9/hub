@@ -171,7 +171,6 @@ ja:
       title: ログイン
       submit: ログインする
       signup: 会員登録はこちら
-      forgot_password: パスワードを忘れた場合
     signup:
       title: 会員登録
       submit: 同意して登録する
@@ -209,6 +208,7 @@ ja:
     setting:
       title: 設定
       change_image: 画像を変更する
+      change_password: パスワードを変更する
       email_verified: メールアドレスは確認済みです。
       email_not_verified: メールアドレスは未確認です。
     user:

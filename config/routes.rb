@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   resource :settings, only: %i[show update] do
     scope module: :settings do
       resource :profile_image, only: %i[show create]
+      resource :password, only: %i[show update]
     end
   end
 end
