@@ -1,0 +1,62 @@
+<div class="px-4 py-2">
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+      <li class="inline-flex items-center">
+        <%= link_to root_path, class: "inline-flex items-center text-sm underline" do %>
+          <%= t('helpers.top') %>
+        <% end %>
+      </li>
+      <li aria-current="page">
+        <div class="flex items-center">
+          <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="ms-1 font-medium md:ms-2"><%= t("helpers.bookmarks.title") %></span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+</div>
+<ul class="mt-4 flex flex-wrap text-sm font-medium text-center">
+  <li class="flex-1 <%= @tab == "page_posts" ? "bg-white" : "" %>">
+    <%= link_to bookmarks_path(tab: "page_posts"), class: "inline-block w-full p-4" do %>
+      <%= t("helpers.pages.posts") %>
+    <% end %>
+  </li>
+  <li class="flex-1 border-l-2 border-r-2 border-gray-200 <%= @tab == "official_posts" ? "bg-white" : "" %>">
+    <%= link_to bookmarks_path(tab: "official_posts"), class: "inline-block w-full p-4" do %>
+      <%= t("helpers.inclusive_hub_editors") %>
+    <% end %>
+  </li>
+</ul>
+<div class="p-4 bg-white">
+  <% if @tab == "page_posts" %>
+    <div>
+      <%= page_entries_info @page_posts %>
+    </div>
+    <div>
+      <ul class="mt-4">
+        <% @page_posts.each do |page_post| %>
+          <%= render "page_posts/page_post_item", post: page_post, page_posts: @page_posts %>
+        <% end %>
+      </ul>
+      <div>
+        <%= paginate @page_posts %>
+      </div>
+    </div>
+  <% elsif @tab == "official_posts" %>
+    <div>
+      <%= page_entries_info @official_posts %>
+    </div>
+    <div>
+      <ul class="mt-4">
+        <% @official_posts.each do |official_post| %>
+          <%= render "official_posts/official_post_item", post: official_post, official_posts: @official_posts %>
+        <% end %>
+      </ul>
+      <div>
+        <%= paginate @official_posts %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,6 @@
 class OfficialPost < ApplicationRecord
   has_one_attached :cover_image
+  has_many :official_post_bookmarks, dependent: :destroy
 
   def display_cover_image
     if cover_image.attached?

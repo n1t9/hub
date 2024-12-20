@@ -215,3 +215,5 @@ ja:
       edit_profile: プロフィールを編集
     following_pages:
       title: フォロー中のページ
+    bookmarks:
+      title: ブックマークしたポスト

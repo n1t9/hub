@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     end
   end
   resources :following_pages, only: %i[index]
-  resources :bookmarks, only: %i[index create destroy]
+  resources :bookmarks, only: %i[index]
   resources :mypages, only: %i[index]
   resource :settings, only: %i[show update] do
     scope module: :settings do
