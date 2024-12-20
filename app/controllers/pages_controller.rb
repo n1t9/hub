@@ -22,10 +22,14 @@ class PagesController < ApplicationController
   end
 
   def new
+    return redirect_to root_path unless current_user&.setup?
+
     @page = current_user.pages.build
   end
 
   def create
+    return redirect_to root_path unless current_user&.setup?
+
     @page = current_user.pages.build(page_params)
     if @page.save
       current_user.page_managers.create(page_id: @page.id, role: 1)
@@ -38,13 +42,17 @@ class PagesController < ApplicationController
   end
 
   def edit
+    return redirect_to root_path unless current_user&.setup?
+
     @page = Page.find(params[:id])
-    redirect_to page_path(params[:id]) unless @page.managers.include?(current_user)
+    redirect_to page_path(params[:id]) unless current_user.page_manager?(@page)
   end
 
   def update
+    return redirect_to root_path unless current_user&.setup?
+
     @page = Page.find(params[:id])
-    return redirect_to page_path(params[:id]) unless @page.managers.include?(current_user)
+    return redirect_to page_path(params[:id]) unless current_user.page_manager?(@page)
 
     if @page.update(page_params)
       flash[:success] = "ページを更新しました"

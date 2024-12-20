@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def page_manager?(page)
-    page_managers.find_by(page_id: page.id)
+    page_managers.find_by(page_id: page.id) || is_admin
   end
 
   def page_follower?(page)
