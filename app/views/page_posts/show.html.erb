@@ -30,7 +30,7 @@
           </span>
         <% end %>
       <% elsif current_user.page_post_bookmark?(@page_post) %>
-        <%= link_to page_post_bookmark_path(@page_post.id), data: { turbo_method: :delete, turbo_confirm: t("flash.unbookmark_confirm") }, class: "border border-gray-500 rounded p-2 text-sm inline-flex items-center gap-2" do %>
+        <%= button_to page_post_bookmark_path(@page_post.id), method: :delete, data: { turbo: false }, class: "border border-gray-500 rounded p-2 text-sm inline-flex items-center gap-2" do %>
           <span class="material-icons-outlined text-base">
             bookmark
           </span>
@@ -39,7 +39,7 @@
           </span>
         <% end %>
       <% else %>
-        <%= link_to page_post_bookmark_path(@page_post.id), data: { turbo_method: :post }, class: "border border-gray-500 rounded p-2 text-sm inline-flex items-center gap-2" do %>
+        <%= button_to page_post_bookmark_path(@page_post.id), method: :post, data: { turbo: false }, class: "border border-gray-500 rounded p-2 text-sm inline-flex items-center gap-2" do %>
           <span class="material-symbols-outlined text-base">
             bookmark
           </span>
