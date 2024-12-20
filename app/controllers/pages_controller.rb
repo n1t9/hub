@@ -21,16 +21,33 @@ class PagesController < ApplicationController
     end
   end
 
+  def new
+    @page = current_user.pages.build
+  end
+
+  def create
+    @page = current_user.pages.build(page_params)
+    if @page.save
+      current_user.page_managers.create(page_id: @page.id, role: 1)
+      flash[:success] = "ページを作成しました"
+      redirect_to page_path(@page)
+    else
+      flash[:error] = @page.errors.full_messages
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
     @page = Page.find(params[:id])
-    redirect_to page_path(params[:id]) unless @page.users.include?(current_user)
+    redirect_to page_path(params[:id]) unless @page.managers.include?(current_user)
   end
 
   def update
     @page = Page.find(params[:id])
-    return redirect_to page_path(params[:id]) unless @page.users.include?(current_user)
+    return redirect_to page_path(params[:id]) unless @page.managers.include?(current_user)
 
     if @page.update(page_params)
+      flash[:success] = "ページを更新しました"
       redirect_to page_path(params[:id])
     else
       render :edit
@@ -40,6 +57,6 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:name, :bio)
+    params.require(:page).permit(:category_id, :name, :profile_image, :url, :bio)
   end
 end

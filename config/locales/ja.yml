@@ -132,7 +132,10 @@ ja:
         url: URL
       page:
         name: ページ名
+        profile_image: プロフィール画像
         bio: ページの説明
+        url: URL
+        category_id: カテゴリ
       page_review:
         content: 口コミ
   views:
@@ -191,8 +194,9 @@ ja:
     pages:
       title: ページ
       index: ページ一覧
-      mypages: 自分のページ
       edit: ページの編集
+      new: ページの作成
+      update: ページの更新
       follow: フォローする
       following: フォロー中
       top: トップ
@@ -217,3 +221,5 @@ ja:
       title: フォロー中のページ
     bookmarks:
       title: ブックマークしたポスト
+    mypages:
+      title: 自分のページ

@@ -1,14 +1,14 @@
 class Pages::ProfileImagesController < ApplicationController
   def show
     @page = Page.find(params[:page_id])
-    return redirect_to page_path(params[:page_id]) unless @page.users.include?(current_user)
+    return redirect_to page_path(params[:page_id]) unless @page.managers.include?(current_user)
 
     @profile_image = @page.display_profile_image
   end
 
   def create
     @page = Page.find(params[:page_id])
-    return redirect_to page_path(params[:page_id]) unless @page.users.include?(current_user)
+    return redirect_to page_path(params[:page_id]) unless @page.managers.include?(current_user)
 
     if @page.update(profile_image: params[:profile_image])
       flash[:success] = t("flash.update")

@@ -9,11 +9,20 @@ class Page < ApplicationRecord
   has_many :page_posts
   has_many :page_reviews
 
+  before_create do
+    self.name ||= ""
+    self.is_verified ||= false
+    self.bio ||= ""
+    self.url ||= ""
+    self.posts_count ||= 0
+    self.reviews_count ||= 0
+  end
+
   def display_profile_image
     if profile_image.attached?
       profile_image.representation(resize_to_fill: [ 300, 300 ])
     else
-      "default_profile_image.png"
+      "default_page_profile_image.png"
     end
   end
 end
