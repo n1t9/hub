@@ -1,0 +1,21 @@
+<div id="<%= dom_id(resource, :bookmark) %>">
+  <% if current_user.nil? %>
+    <%= link_to signin_path, data: { turbo_method: :get, turbo_confirm: t("flash.need_login_confirm") } do %>
+      <span class="material-symbols-outlined text-base">
+        bookmark
+      </span>
+    <% end %>
+  <% elsif current_user.page_post_bookmark?(resource) %>
+    <%= link_to page_post_bookmark_path(resource.id), data: { turbo_method: :delete, turbo_confirm: t("flash.unbookmark_confirm") } do %>
+      <span class="material-icons-outlined text-base">
+        bookmark
+      </span>
+    <% end %>
+  <% else %>
+    <%= link_to page_post_bookmark_path(resource.id), data: { turbo_method: :post } do %>
+      <span class="material-symbols-outlined text-base">
+        bookmark
+      </span>
+    <% end %>
+  <% end %>
+</div>
