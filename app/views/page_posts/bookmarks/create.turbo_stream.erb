@@ -1,0 +1,16 @@
+<%= turbo_stream.replace dom_id(@page_post, :bookmark) do %>
+  <% if current_user.page_post_bookmark?(@page_post) %>
+    <%= link_to page_post_bookmark_path(@page_post.id), data: { turbo_method: :delete, turbo_confirm: t("flash.unbookmark_confirm") } do %>
+      <span class="material-icons-outlined text-base">
+        bookmark
+      </span>
+    <% end %>
+  <% else %>
+    <%= link_to page_post_bookmark_path(@page_post.id), data: { turbo_method: :post } do %>
+      <span class="material-symbols-outlined text-base">
+        bookmark_border
+      </span>
+    <% end %>
+  <% end %>
+  <%= render "shared/toast" if flash.any? %>
+<% end %>

@@ -8,25 +8,27 @@
     </div>
   <% end %>
   <div class="mt-1 flex text-sm text-gray-700">
-    <% if current_user.nil? %>
-      <%= link_to signin_path, data: { turbo_method: :get, turbo_confirm: t("flash.need_login_confirm") } do %>
-        <span class="material-symbols-outlined text-base">
-          bookmark
-        </span>
+    <div id="<%= dom_id(post, :bookmark) %>">
+      <% if current_user.nil? %>
+        <%= link_to signin_path, data: { turbo_method: :get, turbo_confirm: t("flash.need_login_confirm") } do %>
+          <span class="material-symbols-outlined text-base">
+            bookmark
+          </span>
+        <% end %>
+      <% elsif current_user.page_post_bookmark?(post) %>
+        <%= link_to page_post_bookmark_path(post.id), data: { turbo_method: :delete, turbo_confirm: t("flash.unbookmark_confirm") } do %>
+          <span class="material-icons-outlined text-base">
+            bookmark
+          </span>
+        <% end %>
+      <% else %>
+        <%= link_to page_post_bookmark_path(post.id), data: { turbo_method: :post } do %>
+          <span class="material-symbols-outlined text-base">
+            bookmark
+          </span>
+        <% end %>
       <% end %>
-    <% elsif current_user.page_post_bookmark?(post) %>
-      <%= link_to page_post_bookmark_path(post.id), data: { turbo_method: :delete, turbo_confirm: t("flash.unbookmark_confirm") } do %>
-        <span class="material-icons-outlined text-base">
-          bookmark
-        </span>
-      <% end %>
-    <% else %>
-      <%= link_to page_post_bookmark_path(post.id), data: { turbo_method: :post } do %>
-        <span class="material-symbols-outlined text-base">
-          bookmark
-        </span>
-      <% end %>
-    <% end %>
+    </div>
     <%= link_to page_path(post.page), class: "flex" do %>
       <span class="ml-2">
         <%= image_tag post.page.display_profile_image, class: "w-6 h-6" %>
