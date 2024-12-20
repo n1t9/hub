@@ -1,0 +1,4 @@
+<%= turbo_stream.replace dom_id(@official_post, :bookmark) do %>
+  <%= render "official_posts/bookmark_button", resource: @official_post %>
+<% end %>
+<%= turbo_stream.prepend "toast", partial: "shared/toast" if flash.any? %>
