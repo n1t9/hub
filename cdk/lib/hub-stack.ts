@@ -5,7 +5,7 @@ export class HubStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const imageTag = '2024-12-01-00-29-18f3001';
+    const imageTag = '2024-12-21-23-52-e3a41e4';
     const acmArn = 'arn:aws:acm:ap-northeast-1:442426895348:certificate/712c6011-f972-4ccf-8be0-710e4c8cde57';
 
     const vpc = new cdk.aws_ec2.Vpc(this, 'VPC', {
@@ -169,6 +169,7 @@ export class HubStack extends cdk.Stack {
       platformVersion: cdk.aws_ecs.FargatePlatformVersion.VERSION1_4,
       enableExecuteCommand: true,
     });
+    s3.grantReadWrite(service.taskDefinition.taskRole);
 
     const albSecurityGroup = new cdk.aws_ec2.SecurityGroup(this, 'ALBSecurityGroup', {
       vpc,
