@@ -24,7 +24,7 @@
   <div>
     <ul class="mt-4">
       <% @official_posts.each do |post| %>
-        <%= render "shared/official_post_item", post: post, official_posts: @official_posts %>
+        <%= render "official_posts/official_post_item", post: post, official_posts: @official_posts %>
       <% end %>
     </ul>
     <div>
