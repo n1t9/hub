@@ -18,8 +18,15 @@
   </nav>
 </div>
 <div class="p-4 bg-white">
-  <div>
-    <%= page_entries_info @official_posts %>
+  <div class="flex justify-between items-center">
+    <div>
+      <%= page_entries_info @official_posts %>
+    </div>
+    <div>
+      <%= link_to new_official_post_path, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
+        <%= t("helpers.pages.write_post") %>
+      <% end %>
+    </div>
   </div>
   <div>
     <ul class="mt-4">

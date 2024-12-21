@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resource :bookmark, only: %i[create destroy]
     end
   end
-  resources :official_posts, only: %i[index show] do
+  resources :official_posts, only: %i[index show new create edit update destroy] do
     scope module: :official_posts do
       resource :cover_image, only: %i[create]
       resource :bookmark, only: %i[create destroy]

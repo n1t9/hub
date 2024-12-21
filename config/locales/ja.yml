@@ -144,6 +144,10 @@ ja:
         title: タイトル
         content: 本文
         cover_image: カバー画像
+      official_post:
+        title: タイトル
+        content: 本文
+        cover_image: カバー画像
   views:
     pagination:
       first: "最初"
