@@ -9,7 +9,7 @@ class Pages::ReviewsController < ApplicationController
     @page_review = @page.page_reviews.build(page_review_params)
     @page_review.user = current_user
     if @page_review.save
-      flash[:info] = t("flash.create")
+      flash[:success] = t("flash.post")
       redirect_to @page
     else
       flash[:error] = @page_review.errors.full_messages.join(", ")
@@ -29,7 +29,7 @@ class Pages::ReviewsController < ApplicationController
     @page = Page.find(params[:page_id])
     @page_review = @page.page_reviews.find_by(id: params[:id], user: current_user)
     if @page_review && @page_review.update(page_review_params)
-      flash[:info] = t("flash.update")
+      flash[:success] = t("flash.update")
       redirect_to @page
     else
       flash[:error] = @page_review.errors.full_messages.join(", ")
@@ -42,7 +42,7 @@ class Pages::ReviewsController < ApplicationController
     @page_review = @page.page_reviews.find(params[:id])
     if @page_review.user == current_user
       @page_review.destroy
-      flash[:info] = t("flash.destroy")
+      flash[:success] = t("flash.destroy")
       redirect_to @page
     else
       flash[:error] = @page_review.errors.full_messages.join(", ")

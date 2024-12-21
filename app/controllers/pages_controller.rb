@@ -45,14 +45,14 @@ class PagesController < ApplicationController
     return redirect_to root_path unless current_user&.setup?
 
     @page = Page.find(params[:id])
-    redirect_to page_path(params[:id]) unless current_user.page_manager?(@page)
+    redirect_to page_path(params[:id]) unless current_user&.page_manager?(@page)
   end
 
   def update
     return redirect_to root_path unless current_user&.setup?
 
     @page = Page.find(params[:id])
-    return redirect_to page_path(params[:id]) unless current_user.page_manager?(@page)
+    return redirect_to page_path(params[:id]) unless current_user&.page_manager?(@page)
 
     if @page.update(page_params)
       flash[:success] = "ページを更新しました"

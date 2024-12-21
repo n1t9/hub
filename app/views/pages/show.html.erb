@@ -79,6 +79,13 @@
       <h2 class="text-xl font-bold">
         <%= t("helpers.pages.posts") %>
       </h2>
+      <div class="ml-auto">
+        <% if current_user&.page_manager?(@page) %>
+          <%= link_to new_page_page_post_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
+            <%= t("helpers.pages.write_post") %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div>
       <ul class="mt-4">
@@ -152,6 +159,13 @@
       <h2 class="text-xl font-bold">
         <%= t("helpers.pages.posts") %>
       </h2>
+      <div class="ml-auto">
+        <% if current_user&.page_manager?(@page) %>
+          <%= link_to new_page_page_post_path(@page.id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
+            <%= t("helpers.pages.write_post") %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="mt-4">
       <%= page_entries_info @page_posts %>
