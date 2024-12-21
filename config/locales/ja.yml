@@ -88,6 +88,7 @@ ja:
     need_login_confirm: ログインが必要です。ログインページに移動しますか？
     unfollow_confirm: フォローを解除しますか？
     unbookmark_confirm: ブックマークを解除しますか？
+    delete_confirm: 削除しますか？
   activerecord:
     errors:
       format: "%{attribute}%{message}"
@@ -162,6 +163,7 @@ ja:
       create: 登録する
       update: 更新する
       post: 投稿する
+      delete: 削除する
     page_entries_info:
       one_page:
         display_entries:
@@ -209,6 +211,7 @@ ja:
       reviews: 口コミ
       followers: フォロワー
       write_post: ポストを書く
+      update_post: ポストを更新する
       post_content_max: 本文は最大%{count}文字までです
       write_review: 口コミを書く
       edit_review: 口コミを編集する

@@ -7,15 +7,18 @@
       <h3 class="font-bold"><%= @page.name %></h3>
     </div>
   </div>
-  <p class="mt-3">こちらのページについて、レビューを投稿することができます。</p>
+  <p class="mt-3">こちらのページについて、レビューを更新することができます。</p>
   <div class="mt-4">
     <%= form_with url: page_review_path(page_id: @page.id, id: @page_review.id), model: @page_review, method: :patch, local: true do |f| %>
       <div class="mb-4">
         <%= f.label :content, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
         <%= f.text_area :content, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 160, placeholder: t("helpers.page_reviews.content") %>
       </div>
-      <div>
-        <%= f.submit t("helpers.submit.post"), class: "w-full bg-blue-500 text-white font-bold py-2 px-4 rounded text-center cursor-pointer", required: true, maxlength: 160 %>
+      <div class="flex gap-4">
+        <%= f.submit t("helpers.submit.update"), class: "bg-blue-500 text-white font-bold py-2 px-4 rounded text-center cursor-pointer", required: true, maxlength: 160 %>
+        <%= link_to page_review_path(page_id: @page.id, id: @page_review.id), data: { turbo_method: :delete, turbo_confirm: t("flash.delete_confirm") }, class: "bg-red-500 text-white font-bold py-2 px-4 rounded cursor-pointer" do %>
+          <%= t("helpers.submit.delete") %>
+        <% end %>
       </div>
     <% end %>
   </div>
