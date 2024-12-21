@@ -221,6 +221,8 @@ ja:
       edit_review: 口コミを編集する
       view_more_reviews: 口コミをもっと見る
       view_more_posts: ポストをもっと見る
+    page_posts:
+      index: ポスト一覧
     page_reviews:
       content: 口コミ内容を入力してください
     setting:

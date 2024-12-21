@@ -22,7 +22,7 @@
             <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
             </svg>
-            <span class="ms-1 font-medium md:ms-2"><%= t("helpers.pages.index") %></span>
+            <span class="ms-1 font-medium md:ms-2"><%= t("helpers.page_posts.index") %></span>
           </div>
         </li>
       <% else %>
@@ -31,7 +31,7 @@
             <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
             </svg>
-            <span class="ms-1 font-medium md:ms-2"><%= t("helpers.pages.index") %></span>
+            <span class="ms-1 font-medium md:ms-2"><%= t("helpers.page_posts.index") %></span>
           </div>
         </li>
       <% end %>
@@ -40,16 +40,16 @@
 </div>
 <div class="p-4 bg-white">
   <div>
-    <%= page_entries_info @pages %>
+    <%= page_entries_info @page_posts %>
   </div>
   <div>
     <ul class="mt-4">
-      <% @pages.each do |page| %>
-        <%= render "pages/page_item", page: page, pages: @pages %>
+      <% @page_posts.each do |post| %>
+        <%= render "page_posts/page_post_item", post: post, page_posts: @page_posts %>
       <% end %>
     </ul>
     <div>
-      <%= paginate @pages %>
+      <%= paginate @page_posts %>
     </div>
   </div>
 </div>
