@@ -17,7 +17,7 @@
               <%= image_tag current_user.display_profile_image, class: "w-10 h-10 rounded-full object-cover" %>
             </div>
             <div>
-              <h5 class="text-xl font-bold tracking-tight"><%= current_user.display_name %></h5>
+              <h5 class="text-xl font-bold tracking-tight"><%= current_user.display_name %><%= current_user.is_admin ? "（管理者）" : "" %></h5>
               <p class="text-xs text-gray-700">プロフィールを見る</p>
             </div>
             <div class="justify-end ml-auto items-center">
@@ -34,9 +34,8 @@
             <hr class="my-4">
             <%= link_to t("helpers.mypages.title"), mypages_path, class: "block text-gray-700 mt-2" %>
             <hr class="my-4">
-            <%= link_to t("helpers.setting.title"), settings_path, class: "block text-gray-700 mt-2" %>
-            <hr class="my-4">
-            <%= button_to "ログアウト", signout_path, method: :post, class: "w-full text-gray-700 rounded border py-2" %>
+            <%= link_to t("helpers.setting.title"), settings_path, class: "block text-gray-700 mt-2 mb-8" %>
+            <%= button_to "ログアウト", signout_path, method: :post, class: "w-full text-gray-700 rounded border border-gray-500 py-2" %>
             <%= render "shared/feedback_gray" %>
           </div>
         <% end %>

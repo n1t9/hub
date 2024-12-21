@@ -10,7 +10,7 @@
       <%= link_to page_path(@page_post.page) do %>
         <div class="flex items-center">
           <div class="mr-4">
-            <%= image_tag @page_post.page.display_profile_image, class: "w-10 h-10 object-cover" %>
+            <%= image_tag @page_post.page.display_profile_image, class: "w-10 h-10 object-cover rounded" %>
           </div>
           <div>
             <h5 class="text-lg font-bold tracking-tight"><%= @page_post.page.name %></h5>

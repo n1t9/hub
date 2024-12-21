@@ -2,7 +2,7 @@
 <div class="px-4 py-2 bg-white">
   <div class="mb-6">
     <span class="block text-gray-700 font-bold mb-2">プロフィール画像</span>
-    <%= image_tag current_user.display_profile_image, class: "w-24 h-24 my-4 object-cover" %>
+    <%= image_tag current_user.display_profile_image, class: "w-24 h-24 my-4 object-cover border border-gray-300 rounded" %>
     <%= link_to t("helpers.setting.change_image"), settings_profile_image_path, class: "border border-gray-300 bg-gray-100 py-1.5 px-4 rounded text-center text-sm" %>
   </div>
   <%= form_with model: current_user, url: settings_path, method: :put, class: "grid grid-cols-1 gap-4" do |f| %>

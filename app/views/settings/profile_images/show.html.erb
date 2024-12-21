@@ -6,7 +6,7 @@
     <span class="block text-gray-700 font-bold mb-2">プロフィール画像</span>
     <%= form_with url: settings_profile_image_path, html: { multipart: true, class: "space-y-4" } do |f| %>
       <div class="flex items-center">
-        <%= image_tag current_user.display_profile_image, class: "w-24 h-24 border border-gray-300 object-cover" %>
+        <%= image_tag current_user.display_profile_image, class: "w-24 h-24 border border-gray-300 object-cover rounded" %>
       </div>
       <div>
         <%= f.label :profile_image, "新しい画像を選択", class: "block text-sm font-medium text-gray-700" %>

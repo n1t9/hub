@@ -11,7 +11,7 @@
   <%= form_with model: @page, url: page_path(@page.id), method: :put, class: "grid grid-cols-1 gap-5" do |f| %>
     <div>
       <%= f.label :name %>
-      <%= f.text_field :name, class: "block w-full border border-gray-200 rounded py-3 px-4 leading-tight", maxlength: 20 %>
+      <%= f.text_field :name, class: "block w-full border border-gray-200 rounded py-3 px-4 mt-1 leading-tight", maxlength: 20 %>
     </div>
     <div>
       <%= f.label :category_id %>
@@ -19,8 +19,8 @@
     </div>
     <div>
       <span>ページ画像</span>
-      <%= image_tag @page.display_profile_image, class: "w-24 h-24 my-4 object-cover" %>
-      <%= link_to t("helpers.setting.change_image"), page_profile_image_path(@page.id), class: "border py-2 px-4 rounded text-center" %>
+      <%= image_tag @page.display_profile_image, class: "w-24 h-24 my-4 object-cover border border-gray-300 rounded" %>
+      <%= link_to t("helpers.setting.change_image"), page_profile_image_path(@page.id), class: "block inline-block border border-gray-300 bg-gray-100 mb-1.5 py-1.5 px-3 rounded text-center text-sm" %>
     </div>
     <div>
       <%= f.label :url %>

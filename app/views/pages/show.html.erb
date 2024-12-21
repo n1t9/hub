@@ -1,7 +1,7 @@
 <div class="px-4 py-3 bg-white">
   <div class="flex items-center justify-between">
     <div>
-      <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover" %>
+      <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover rounded" %>
     </div>
     <% if current_user&.page_manager?(@page) %>
       <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
