@@ -12,6 +12,7 @@ class Pages::PagePostsController < ApplicationController
 
     @page_post = @page.page_posts.build(page_post_params)
     if @page_post.save
+      @page.update(updated_at: Time.zone.now)
       flash[:success] = t("flash.post")
       redirect_to page_path(@page)
     else
@@ -33,6 +34,7 @@ class Pages::PagePostsController < ApplicationController
 
     @page_post = @page.page_posts.find(params[:id])
     if @page_post.update(page_post_params)
+      @page.update(updated_at: Time.zone.now)
       flash[:success] = t("flash.update")
       redirect_to page_path(@page)
     else
