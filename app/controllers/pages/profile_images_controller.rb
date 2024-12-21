@@ -14,7 +14,7 @@ class Pages::ProfileImagesController < ApplicationController
       flash[:success] = t("flash.update")
       redirect_to edit_page_path(@page)
     else
-      flash[:alert] = t("flash.update_failed")
+      flash[:error] = t("flash.update_failed")
       render :show, status: :unprocessable_entity
     end
   end

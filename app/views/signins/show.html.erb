@@ -10,11 +10,11 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: "w-full rounded border mt-1 p-2", required: true, minlength: 8, maxlength: 20 %>
     </div>
-    <div>
-      <%= f.submit t("helpers.signin.submit"), class: "w-full bg-blue-500 text-white py-2 rounded cursor-pointer" %>
+    <div class="mt-2">
+      <%= f.submit t("helpers.signin.submit"), class: "w-full bg-black text-white py-2 rounded cursor-pointer" %>
     </div>
   <% end %>
-  <div class="mt-2">
+  <div class="mt-8">
     <%= link_to t("helpers.signin.signup"), signup_path, class: "text-blue cursor-pointer underline" %>
   </div>
 </div>

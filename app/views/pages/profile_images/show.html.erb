@@ -1,5 +1,8 @@
 <div class="px-4 pt-3 pb-6 bg-white">
-  <div class="">
+  <%= link_to official_posts_path, class: "text-sm underline" do %>
+    ←Inclusive Hub編集部へ戻る
+  <% end %>
+  <div class="mt-4">
     <span class="block text-gray-700 font-bold mb-2">ページ画像</span>
     <%= form_with url: page_profile_image_path, html: { multipart: true, class: "space-y-4" } do |f| %>
       <div class="flex items-center space-x-4">
@@ -9,8 +12,8 @@
         <%= f.label :profile_image, "新しい画像を選択", class: "block text-sm font-medium text-gray-700" %>
         <%= f.file_field :profile_image, class: "mt-1 block w-full text-sm cursor-pointer" %>
       </div>
-      <div>
-        <%= f.submit "更新する", class: "w-full bg-blue-500 text-white py-2 px-4 rounded cursor-pointer" %>
+      <div class="flex justify-end">
+        <%= f.submit "更新する", class: "bg-black text-white py-2 px-4 rounded cursor-pointer" %>
       </div>
     <% end %>
   </div>

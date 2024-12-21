@@ -16,7 +16,7 @@ class Pages::PagePostsController < ApplicationController
       flash[:success] = t("flash.post")
       redirect_to page_path(@page)
     else
-      flash[:alert] = @page_post.errors.full_messages
+      flash[:error] = @page_post.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -38,7 +38,7 @@ class Pages::PagePostsController < ApplicationController
       flash[:success] = t("flash.update")
       redirect_to page_path(@page)
     else
-      flash[:alert] = @page_post.errors.full_messages
+      flash[:error] = @page_post.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end

@@ -1,4 +1,4 @@
-<li class="pt-2 pb-3 border-gray-300 border-b">
+<li class="pt-2 pb-3 border-gray-300 <%= "border-b" unless page == pages.last %>">
   <%= link_to page_path(page), class: "block" do %>
     <div class="flex items-center">
       <div class="w-16 flex-shrink-0">

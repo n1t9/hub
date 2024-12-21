@@ -3,7 +3,7 @@ class PagePost < ApplicationRecord
   has_many :page_post_bookmarks, dependent: :destroy
   belongs_to :page
 
-  validates :title, presence: true, length: { maximum: 40 }
+  validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 2000 }
 
   def display_cover_image

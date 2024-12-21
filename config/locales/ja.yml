@@ -229,6 +229,8 @@ ja:
       change_password: パスワードを変更する
       email_verified: メールアドレスは確認済みです。
       email_not_verified: メールアドレスは未確認です。
+      change_password_success: パスワードを変更しました
+      change_password_failed: パスワードが一致しない、または現在のパスワードが間違っています
     user:
       edit_profile: プロフィールを編集
     following_pages:

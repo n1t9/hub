@@ -14,14 +14,14 @@
     </div>
     <div>
       <span class="text-sm">
-        <%= t("helpers.signup.agree", link: "<a href='#{terms_path}' target='_blank' class='text-blue-500'>#{t('helpers.signup.terms')}</a>").html_safe %>
+        <%= t("helpers.signup.agree", link: "<a href='#{terms_path}' target='_blank' class='text-blue-500 underline'>#{t('helpers.signup.terms')}</a>").html_safe %>
       </span>
     </div>
-    <div>
-      <%= f.submit t("helpers.signup.submit"), class: "w-full bg-blue-500 text-white py-2 rounded cursor-pointer" %>
+    <div class="mt-2">
+      <%= f.submit t("helpers.signup.submit"), class: "bg-black w-full text-white py-2 px-4 rounded cursor-pointer" %>
     </div>
   <% end %>
-  <div class="mt-2">
+  <div class="mt-8">
     <%= link_to t("helpers.signup.signin"), signin_path, class: "text-blue underline" %>
   </div>
 </div>

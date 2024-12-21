@@ -3,11 +3,11 @@
     ←Inclusive Hub編集部へ戻る
   <% end %>
   <div class="mt-6">
-    <h2 class="text-lg font-bold"><%= t("helpers.pages.write_post") %></h2>
+    <h2 class="text-lg font-bold"><%= t("helpers.pages.update_post") %></h2>
   </div>
 </div>
 <div class="px-4 pt-2 pb-8 bg-white">
-  <%= form_with model: @official_post, url: official_posts_path(@page), method: :post, class: "grid grid-cols-1 gap-5" do |f| %>
+  <%= form_with model: @official_post, url: official_post_path(@official_post), method: :patch, class: "grid grid-cols-1 gap-5" do |f| %>
     <div>
       <%= f.label :title %>
       <%= f.text_field :title, class: "w-full rounded border mt-1 p-2", required: true, maxlength: 50 %>
@@ -22,8 +22,11 @@
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.pages.post_content_max", count: 5000) %></span>
       <%= f.text_area :content, class: "w-full rounded border mt-1 p-2", rows: 14, maxlength: 5000, required: true %>
     </div>
-    <div class="flex justify-end">
-      <%= f.submit t("helpers.submit.post"), class: "bg-black text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+    <div class="flex gap-4 justify-end">
+      <%= link_to official_post_path(@official_post), data: { turbo_method: :delete, turbo_confirm: t("flash.delete_confirm") }, class: "text-red-700 font-bold py-2 px-4 cursor-pointer" do %>
+        <%= t("helpers.submit.delete") %>
+      <% end %>
+      <%= f.submit t("helpers.submit.update"), class: "bg-black text-white font-bold py-2 px-4 rounded cursor-pointer" %>
     </div>
   <% end %>
 </div>

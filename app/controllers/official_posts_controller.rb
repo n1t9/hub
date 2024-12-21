@@ -22,7 +22,7 @@ class OfficialPostsController < ApplicationController
       flash[:success] = t("flash.post")
       redirect_to official_post_path(@official_post)
     else
-      flash[:alert] = @official_post.errors.full_messages
+      flash[:error] = @official_post.errors.full_messages
       render :new
     end
   end
@@ -41,7 +41,7 @@ class OfficialPostsController < ApplicationController
       flash[:success] = t("flash.update")
       redirect_to official_post_path(@official_post)
     else
-      flash[:alert] = @official_post.errors.full_messages
+      flash[:error] = @official_post.errors.full_messages
       render :edit
     end
   end

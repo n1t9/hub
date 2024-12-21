@@ -1,4 +1,7 @@
 <div class="px-4 pt-3 pb-6 bg-white">
+  <%= link_to page_path(@page), class: "text-sm underline" do %>
+    ←ページへ戻る
+  <% end %>
   <div class="flex items-center">
     <div class="w-16 flex-shrink-0">
       <%= image_tag @page.display_profile_image, class: "w-16 h-16 object-cover rounded" %>
@@ -12,10 +15,10 @@
     <%= form_with model: @page_review, local: true do |f| %>
       <div class="mb-4">
         <%= f.label :content, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
-        <%= f.text_area :content, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 160, placeholder: t("helpers.page_reviews.content") %>
+        <%= f.text_area :content, class: "w-full rounded border mt-1 p-2", rows: 4, maxlength: 160, placeholder: t("helpers.page_reviews.content") %>
       </div>
-      <div>
-        <%= f.submit t("helpers.submit.post"), class: "w-full bg-blue-500 text-white font-bold py-2 px-4 rounded text-center cursor-pointer", required: true, maxlength: 160 %>
+      <div class="flex justify-end">
+        <%= f.submit t("helpers.submit.post"), class: "bg-black text-white font-bold py-2 px-4 rounded text-center cursor-pointer", required: true, maxlength: 160 %>
       </div>
     <% end %>
   </div>

@@ -24,7 +24,7 @@
   <div>
     <ul class="mt-4">
       <% @pages.each do |page| %>
-        <%= render "pages/page_item", page: page %>
+        <%= render "pages/page_item", page: page, pages: @pages %>
       <% end %>
     </ul>
     <div>

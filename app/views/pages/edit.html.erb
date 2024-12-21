@@ -25,14 +25,14 @@
     <div>
       <%= f.label :url %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
-      <%= f.text_field :url, class: "w-full rounded border mt-1 p-2", required: false, maxlength: 255 %>
+      <%= f.text_field :url, class: "w-full rounded border mt-1 p-2", required: true, rows: 3, maxlength: 255 %>
     </div>
     <div>
       <%= f.label :bio %>
-      <%= f.text_area :bio, class: "block w-full border border-gray-200 rounded py-3 px-4 leading-tight", maxlength: 160 %>
+      <%= f.text_area :bio, class: "block w-full border border-gray-200 rounded py-3 px-4 leading-tight", required: true, rows: 4, maxlength: 255 %>
     </div>
-    <div>
-      <%= f.submit t("helpers.pages.update"), class: "w-full bg-blue-500 text-white font-bold py-2 px-4 rounded text-center cursor-pointer" %>
+    <div class="flex justify-end">
+      <%= f.submit t("helpers.pages.update"), class: "bg-black text-white font-bold py-2 px-4 rounded text-center cursor-pointer" %>
     </div>
   <% end %>
 </div>

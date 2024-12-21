@@ -10,7 +10,7 @@
   <%= form_with model: @page_post, url: page_page_posts_path(@page), method: :post, class: "grid grid-cols-1 gap-5" do |f| %>
     <div>
       <%= f.label :title %>
-      <%= f.text_field :title, class: "w-full rounded border mt-1 p-2", required: false, maxlength: 32 %>
+      <%= f.text_field :title, class: "w-full rounded border mt-1 p-2", required: true, maxlength: 50 %>
     </div>
     <div>
       <%= f.label :cover_image %>
@@ -20,10 +20,10 @@
     <div>
       <%= f.label :content, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.pages.post_content_max", count: 2000) %></span>
-      <%= f.text_area :content, class: "w-full rounded border mt-1 p-2", rows: 14, maxlength: 2000 %>
+      <%= f.text_area :content, class: "w-full rounded border mt-1 p-2", rows: 14, maxlength: 2000, required: true %>
     </div>
-    <div>
-      <%= f.submit t("helpers.submit.post"), class: "bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+    <div class="flex justify-end">
+      <%= f.submit t("helpers.submit.post"), class: "bg-black text-white font-bold py-2 px-4 rounded cursor-pointer" %>
     </div>
   <% end %>
 </div>

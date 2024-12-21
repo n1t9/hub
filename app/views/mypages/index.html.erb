@@ -40,17 +40,19 @@
       </span>
     <% end %>
   <% end %>
-  <div>
-    <%= page_entries_info @pages %>
-  </div>
-  <div>
-    <ul class="mt-4">
-      <% @pages.each do |page| %>
-        <%= render "pages/page_item", page: page %>
-      <% end %>
-    </ul>
+  <% if @pages.present? %>
     <div>
-      <%= paginate @pages %>
+      <%= page_entries_info @pages %>
     </div>
-  </div>
+    <div>
+      <ul class="mt-4">
+        <% @pages.each do |page| %>
+          <%= render "pages/page_item", page: page, pages: @pages %>
+        <% end %>
+      </ul>
+      <div>
+        <%= paginate @pages %>
+      </div>
+    </div>
+  <% end %>
 </div>
