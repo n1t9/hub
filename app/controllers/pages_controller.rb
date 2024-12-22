@@ -62,6 +62,17 @@ class PagesController < ApplicationController
     end
   end
 
+  def destroy
+    return redirect_to root_path unless current_user&.setup?
+
+    @page = Page.find(params[:id])
+    return redirect_to page_path(params[:id]) unless current_user&.page_manager?(@page)
+
+    @page.destroy
+    flash[:success] = "ページを削除しました"
+    redirect_to root_path
+  end
+
   private
 
   def page_params
