@@ -28,3 +28,9 @@
 * $ `cd cdk`
 * $ `make exec` # ecs exec
 * $ `make rds-ssh` # ssh to bastion host and connect to RDS
+
+## database schema
+![schema](./docs/schema.png)
+
+## infra architecture
+![infra](./docs/architecture.png)
