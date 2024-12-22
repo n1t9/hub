@@ -233,6 +233,7 @@ ja:
       email_not_verified: メールアドレスは未確認です。
       change_password_success: パスワードを変更しました
       change_password_failed: パスワードが一致しない、または現在のパスワードが間違っています
+    company: 運営会社
     user:
       edit_profile: プロフィールを編集
     following_pages:
