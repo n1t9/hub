@@ -1,7 +1,7 @@
 <%= content_for :title, t("helpers.setting.title") %>
 <div class="px-4 py-2 bg-white">
   <div class="mb-6">
-    <span class="block text-gray-700 font-bold mb-2">プロフィール画像</span>
+    <span class="block text-gray-700 font-bold mb-2"><%= t("activerecord.attributes.user.profile_image") %></span>
     <%= image_tag current_user.display_profile_image, class: "w-24 h-24 my-4 object-cover border border-gray-300 rounded" %>
     <%= link_to t("helpers.setting.change_image"), settings_profile_image_path, class: "border border-gray-300 bg-gray-100 py-1.5 px-4 rounded text-center text-sm" %>
   </div>
@@ -34,6 +34,9 @@
       <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 160, placeholder: t("helpers.setup.bio"), required: true %>
     </div>
     <div class="my-4 flex justify-end">
+      <%= link_to user_path(@current_user), data: { turbo_method: :delete, turbo_confirm: t("flash.delete_account_confirm") }, class: "text-red-700 font-bold py-2 px-4 cursor-pointer" do %>
+        <%= t("helpers.setting.delete_account") %>
+      <% end %>
       <%= f.submit t("helpers.submit.update"), class: "bg-black text-white font-bold py-2 px-4 rounded cursor-pointer" %>
     </div>
   <% end %>

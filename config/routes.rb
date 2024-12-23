@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: %i[show]
   resources :keywords, only: %i[show]
-  resources :users, only: %i[show]
+  resources :users, only: %i[show destroy]
   resources :pages, only: %i[index show new create edit update destroy] do
     scope module: :pages do
       resource :follow, only: %i[create destroy]

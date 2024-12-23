@@ -89,6 +89,7 @@ ja:
     unfollow_confirm: フォローを解除しますか？
     unbookmark_confirm: ブックマークを解除しますか？
     delete_confirm: 削除しますか？
+    delete_account_confirm: 本当に退会してよろしいでしょうか？
   activerecord:
     errors:
       format: "%{attribute}%{message}"
@@ -233,6 +234,7 @@ ja:
       email_not_verified: メールアドレスは未確認です。
       change_password_success: パスワードを変更しました
       change_password_failed: パスワードが一致しない、または現在のパスワードが間違っています
+      delete_account: 退会する
     company: 運営会社
     user:
       edit_profile: プロフィールを編集
