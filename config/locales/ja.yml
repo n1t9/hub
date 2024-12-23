@@ -182,6 +182,8 @@ ja:
       welcome: '%{name}さん、こんにちは'
       welcome_guest: 'Inclusive Hubへようこそ'
       new_posts: 新着ポスト
+      following_page_posts: フォロー中ページのポスト
+      following_pages: フォロー中のページ
     signin:
       title: ログイン
       submit: ログインする

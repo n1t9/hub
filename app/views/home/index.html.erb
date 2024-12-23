@@ -1,7 +1,7 @@
 <div class="px-4 sm:px-0 pt-3 py-6">
   <h2 class="text-xl font-bold mt-2 mb-4">
     <% if current_user %>
-      <%= t("helpers.home.welcome", name: current_user.name) %>
+      <%= t("helpers.home.welcome", name: current_user.display_name) %>
     <% else %>
       <%= t("helpers.home.welcome_guest") %>
     <% end %>
@@ -36,6 +36,44 @@
   </ul>
 </div>
 <div class="h-4"></div>
+<% if current_user && @following_page_posts.present? %>
+  <div class="px-4 pt-4 pb-2 bg-white">
+    <div class="flex">
+      <h2 class="text-xl font-bold">
+        <%= t("helpers.home.following_page_posts") %>
+      </h2>
+    </div>
+    <ul class="mt-4">
+      <% @following_page_posts.each do |post| %>
+        <%= render "page_posts/page_post_item", post: post, page_posts: @following_page_posts %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="h-4"></div>
+<% end %>
+<% if current_user && @following_pages.present? %>
+  <div class="px-4 pt-4 pb-2 bg-white">
+    <div class="flex">
+      <h2 class="text-xl font-bold">
+        <%= t("helpers.home.following_pages") %>
+      </h2>
+      <div class="ml-auto">
+        <%= link_to following_pages_path, class: "block px-2 py-1 border border-gray-500 rounded inline-flex items-center text-sm text-gray-700" do %>
+          <%= t("helpers.see_more") %>
+          <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
+            arrow_forward_ios
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <ul class="mt-4">
+      <% @following_pages.each do |page| %>
+        <%= render "pages/page_item", page: page, pages: @following_pages %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="h-4"></div>
+<% end %>
 <div class="px-4 pt-4 pb-2 bg-white">
   <div class="flex">
     <h2 class="text-xl font-bold">
