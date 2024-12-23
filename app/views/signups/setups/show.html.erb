@@ -22,11 +22,6 @@
       <span class="text-sm text-gray-500"><%= t("helpers.setup.background_detail") %></span>
       <%= f.text_area :background, class: "w-full rounded border mt-1 p-2", required: true, rows: 3, maxlength: 255 %>
     </div>
-    <div>
-      <%= f.label :bio %>
-      <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
-      <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 255, placeholder: t("helpers.setup.bio") %>
-    </div>
     <div class="flex justify-end">
       <%= f.submit t("helpers.setup.submit"), class: "bg-black text-white font-bold py-2 px-4 rounded text-center cursor-pointer" %>
     </div>

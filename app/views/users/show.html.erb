@@ -3,7 +3,7 @@
     <div>
       <%= image_tag @user.display_profile_image, class: "w-24 h-24 object-cover rounded" %>
     </div>
-    <% if current_user.id == @user.id %>
+    <% if current_user&.id == @user.id %>
       <%= link_to settings_path, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
         <%= t("helpers.user.edit_profile") %>
       <% end %>

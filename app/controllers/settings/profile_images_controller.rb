@@ -1,6 +1,7 @@
 class Settings::ProfileImagesController < ApplicationController
   def show
     redirect_to root_path unless current_user
+
     @profile_image = current_user.display_profile_image
   end
 
