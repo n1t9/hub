@@ -5,33 +5,35 @@
     <%= image_tag current_user.display_profile_image, class: "w-24 h-24 my-4 object-cover border border-gray-300 rounded" %>
     <%= link_to t("helpers.setting.change_image"), settings_profile_image_path, class: "border border-gray-300 bg-gray-100 py-1.5 px-4 rounded text-center text-sm" %>
   </div>
-  <%= form_with model: current_user, url: settings_path, method: :put, class: "grid grid-cols-1 gap-4" do |f| %>
+  <%= form_with model: current_user, url: settings_path, method: :put, class: "grid grid-cols-1 gap-5" do |f| %>
     <div>
-      <%= f.label :name, class: "block tracking-wide text-gray-700 font-bold text-sm mb-2" %>
-      <%= f.text_field :name, class: "block w-full border border-gray-200 rounded px-3 py-2 mb-3 leading-tight", maxlength: 20, required: true %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", maxlength: 20, required: true %>
     </div>
     <div>
-      <%= f.label :display_name, class: "block tracking-wide text-gray-700 font-bold text-sm mb-2" %>
-      <%= f.text_field :display_name, class: "block w-full border border-gray-200 rounded px-3 py-2 mb-3 leading-tight", maxlength: 20 %>
+      <%= f.label :display_name %>
+      <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
+      <%= f.text_field :display_name, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", maxlength: 20 %>
     </div>
     <div>
-      <%= f.label :url, class: "block tracking-wide text-gray-700 font-bold text-sm mb-2" %>
-      <%= f.text_field :url, class: "block w-full border border-gray-200 rounded px-3 py-2 mb-3 leading-tight", maxlength: 255 %>
+      <%= f.label :url %>
+      <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
+      <%= f.text_field :url, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", maxlength: 255 %>
     </div>
     <div>
-      <%= f.label :email, class: "block tracking-wide text-gray-700 font-bold text-sm mb-2" %>
-      <%= f.email_field :email, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-3 py-2 leading-tight" %>
+      <%= f.label :email %>
+      <%= f.email_field :email, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-3 py-2 mt-1 leading-tight" %>
     </div>
     <div>
-      <%= f.label :password, class: "block tracking-wide text-gray-700 font-bold text-sm mb-2" %>
-      <%= f.password_field :password, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-3 py-2 leading-tight", placeholder: "********" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", placeholder: "********" %>
     </div>
     <div>
       <%= link_to t("helpers.setting.change_password"), settings_password_path, class: "block inline-block border border-gray-300 bg-gray-100 mb-1.5 py-1.5 px-3 rounded text-center text-sm" %>
     </div>
     <div>
-      <%= f.label :bio, class: "block tracking-wide text-gray-700 font-bold text-sm mb-2" %>
-      <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 160, placeholder: t("helpers.setup.bio"), required: true %>
+      <%= f.label :bio %>
+      <%= f.text_area :bio, class: "w-full rounded border mt-1 p-2", rows: 3, maxlength: 255, placeholder: t("helpers.setup.bio"), required: true %>
     </div>
     <div class="my-4 flex justify-end">
       <%= link_to user_path(@current_user), data: { turbo_method: :delete, turbo_confirm: t("flash.delete_account_confirm") }, class: "text-red-700 font-bold py-2 px-4 cursor-pointer" do %>

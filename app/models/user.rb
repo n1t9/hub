@@ -12,8 +12,9 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :password, length: { minimum: 8 }, allow_blank: true
   validates :name, length: { maximum: 20 }
-  validates :background, length: { maximum: 100 }
-  validates :bio, length: { maximum: 160 }
+  validates :display_name, length: { maximum: 20 }
+  validates :background, length: { maximum: 255 }
+  validates :bio, length: { maximum: 255 }
 
   before_create do
     self.name ||= ""
