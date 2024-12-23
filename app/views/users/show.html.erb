@@ -14,16 +14,6 @@
       <%= @user.display_name %>
     </h2>
     <div class="mt-2 text-sm text-gray-500 break-all"><%= simple_format(auto_link(@user.bio, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
-    <% if @user.url.present? %>
-      <div class="mt-1 flex">
-        <span class="material-symbols-outlined text-gray-500 text-sm mr-1">
-          link
-        </span>
-        <span class="text-blue-500 text-xs">
-          <%= link_to @user.url.gsub(/^https?:\/\/(www\.)?/, ""), @user.url, target: "_blank", rel: "noopener", class: "underline" %>
-        </span>
-      </div>
-    <% end %>
   </div>
 </div>
 <div class="h-4"></div>

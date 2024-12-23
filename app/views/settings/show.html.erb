@@ -16,11 +16,6 @@
       <%= f.text_field :display_name, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", maxlength: 20 %>
     </div>
     <div>
-      <%= f.label :url %>
-      <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
-      <%= f.text_field :url, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", maxlength: 255 %>
-    </div>
-    <div>
       <%= f.label :email %>
       <%= f.email_field :email, disabled: true, class: "block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-3 py-2 mt-1 leading-tight" %>
     </div>

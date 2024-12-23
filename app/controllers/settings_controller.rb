@@ -16,7 +16,7 @@ class SettingsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :display_name, :url, :bio).tap do |p|
+    params.require(:user).permit(:name, :display_name, :bio).tap do |p|
       p[:display_name] = p[:name] if p[:display_name].blank?
       p[:bio] = t("helpers.setup.bio") if p[:bio].blank?
     end
