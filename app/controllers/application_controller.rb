@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def create_session(user)
-    session_token = SecureRandom.alphanumeric(16)
-    user.update(session_token:)
-    session[:session_token] = session_token
+    session[:session_token] = user.session_token
   end
 end
