@@ -5,7 +5,8 @@ export class HubStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const imageTag = '2024-12-21-23-52-e3a41e4';
+    const imageTag = '2024-12-23-03-08-da13797';
+
     const acmArn = 'arn:aws:acm:ap-northeast-1:442426895348:certificate/712c6011-f972-4ccf-8be0-710e4c8cde57';
 
     const vpc = new cdk.aws_ec2.Vpc(this, 'VPC', {
@@ -49,17 +50,15 @@ export class HubStack extends cdk.Stack {
         subnetType: cdk.aws_ec2.SubnetType.PRIVATE_ISOLATED,
       },
       publiclyAccessible: false,
-      // TODO: Chage the engine to Aurora PostgreSQL
       engine: cdk.aws_rds.DatabaseInstanceEngine.postgres({
         version: cdk.aws_rds.PostgresEngineVersion.VER_16_4,
       }),
-      // TODO: Change the instance type to db.t4g.medium
       instanceType: cdk.aws_ec2.InstanceType.of(
-        cdk.aws_ec2.InstanceClass.T3,
-        cdk.aws_ec2.InstanceSize.MICRO,
+        cdk.aws_ec2.InstanceClass.M7G,
+        cdk.aws_ec2.InstanceSize.LARGE,
       ),
       securityGroups: [rdsSecurityGroup],
-      allocatedStorage: 20,
+      allocatedStorage: 50,
       databaseName: 'hub',
       multiAz: true,
       storageEncrypted: true,
@@ -69,8 +68,7 @@ export class HubStack extends cdk.Stack {
       autoMinorVersionUpgrade: true,
       deleteAutomatedBackups: true,
       enablePerformanceInsights: true,
-      // TODO: Change deleteProtection to true
-      deletionProtection: false,
+      deletionProtection: true,
     });
 
     const bastionSecurityGroup = new cdk.aws_ec2.SecurityGroup(this, 'BastionSecurityGroup', {
@@ -110,8 +108,8 @@ export class HubStack extends cdk.Stack {
     });
 
     const taskDefinition = new cdk.aws_ecs.FargateTaskDefinition(this, 'TaskDefinition', {
-      cpu: 256,
-      memoryLimitMiB: 512, // TODO: Change the memory limit to 4096
+      cpu: 512,
+      memoryLimitMiB: 1024,
       runtimePlatform: {
         operatingSystemFamily: cdk.aws_ecs.OperatingSystemFamily.LINUX,
         cpuArchitecture: cdk.aws_ecs.CpuArchitecture.X86_64,
@@ -160,7 +158,7 @@ export class HubStack extends cdk.Stack {
       cluster,
       serviceName: 'hub',
       taskDefinition,
-      desiredCount: 1, // TODO: Change the desired count to 2
+      desiredCount: 2,
       assignPublicIp: true,
       securityGroups: [serviceSecurityGroup],
       vpcSubnets: {
