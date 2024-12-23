@@ -3,11 +3,12 @@
     <div>
       <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover rounded" %>
     </div>
-    <% if current_user&.page_manager?(@page) %>
-      <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
-        <%= t("helpers.pages.edit") %>
+    <div class="flex gap-2">
+      <% if current_user&.page_manager?(@page) %>
+        <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
+          <%= t("helpers.pages.edit") %>
+        <% end %>
       <% end %>
-    <% else %>
       <% if current_user&.page_follower?(@page) %>
         <%= button_to page_follow_path(@page.id), method: :delete, class: "p-3 flex-item text-sm rounded border border-gray-500", data: { turbo_confirm: t("flash.unfollow_confirm") } do %>
           <%= t("helpers.pages.following") %>
@@ -23,7 +24,7 @@
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
   <div class="mt-4">
     <h2 class="text-xl font-bold flex items-center">
