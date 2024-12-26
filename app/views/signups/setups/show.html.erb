@@ -8,7 +8,7 @@
       <%= f.text_field :name, class: "w-full rounded border mt-1 p-2", required: true, maxlength: 20 %>
     </div>
     <div>
-      <%= f.label :display_name %>
+      <%= f.label :display_name, t("helpers.setup.display_name") %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
       <%= f.text_field :display_name, class: "w-full rounded border mt-1 p-2", required: false, maxlength: 20 %>
     </div>

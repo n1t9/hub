@@ -206,6 +206,7 @@ ja:
     setup:
       title: 初期設定
       background_detail: バックグラウンド等をご記入ください、例）○○障害の当事者、家族、研究開発者など
+      display_name: 表示名(入力がない場合は氏名が表示されます)
       bio: はじめまして、よろしくお願いします。
       submit: 登録する
     pages:
