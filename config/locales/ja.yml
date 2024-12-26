@@ -179,6 +179,8 @@ ja:
         display_entries: "<b>%{first}~%{last}</b>件を表示/全<b>%{total}</b>件"
     top: トップ
     home:
+      menu: メニュー
+      close: 閉じる
       welcome: '%{name}さん、こんにちは'
       welcome_guest: 'Inclusive Hubへようこそ'
       new_posts: 新着ポスト
@@ -197,6 +199,7 @@ ja:
       agree: '会員登録には%{link}への同意が必要です。'
       terms: 利用規約
     signout:
+      title: ログアウト
       submit: ログアウトする
     terms:
       title: 利用規約

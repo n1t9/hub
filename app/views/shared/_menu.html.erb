@@ -5,7 +5,7 @@
       <span class="material-icons-outlined">
         close
       </span>
-      <span class="text-xs font-medium">とじる</span>
+      <span class="text-xs font-medium"><%= t("helpers.home.close") %></span>
     </button>
   </div>
   <div class="mt-8 max-w-sm mx-auto">
@@ -39,7 +39,7 @@
             <%= link_to t("helpers.company"), "https://the-elements.jp/", target: "_blank", class: "block text-gray-700 mt-2" %>
             <hr class="my-4">
             <%= link_to t("helpers.terms.title"), terms_path, target: "_blank", class: "block text-gray-700 mt-2 mb-8" %>
-            <%= button_to "ログアウト", signout_path, method: :post, class: "w-full text-gray-700 rounded border border-gray-500 py-2" %>
+            <%= button_to t("helpers.signout.title"), signout_path, method: :post, class: "w-full text-gray-700 rounded border border-gray-500 py-2" %>
             <%= render "shared/feedback_gray" %>
           </div>
         <% end %>
