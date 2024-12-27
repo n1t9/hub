@@ -6,6 +6,14 @@
       <%= t("helpers.home.welcome_guest") %>
     <% end %>
   </h2>
+  <% if current_user&.is_admin %>
+    <%= link_to edit_categories_path, class: "block mb-2 px-2 py-1 border border-gray-500 rounded inline-flex items-center text-sm text-gray-700 bg-white" do %>
+      <%= t("helpers.home.edit_category") %>
+      <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
+        arrow_forward_ios
+      </span>
+    <% end %>
+  <% end %>
   <div class="w-full flex flex-col gap-2">
     <%= render "categories/category_item", category: @categories[0] %>
     <%= render "categories/category_item", category: @categories[1] %>

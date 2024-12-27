@@ -1,0 +1,20 @@
+<div class="px-4 py-2 bg-white">
+  <h2 class="text-xl font-bold my-4">カテゴリ編集</h2>
+  <%= form_with url: categories_path, method: :patch, class: "grid grid-cols-1 gap-5" do |f| %>
+    <table class="table-auto w-full">
+      <tbody>
+        <% @categories.each do |c| %>
+          <tr>
+            <td class="py-2"><%= c.name %></td>
+            <td class="py-2">
+              <%= f.text_field "categories[#{c.id}][description]", value: c.description, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+      <div class="mb-4 flex gap-4 justify-end">
+        <%= f.submit t("helpers.submit.update"), class: "bg-black text-white font-bold py-2 px-4 rounded text-center cursor-pointer" %>
+      </div>
+  <% end %>
+</div>

@@ -18,7 +18,7 @@
         <%= link_to page_review_path(page_id: @page.id, id: @page_review.id), data: { turbo_method: :delete, turbo_confirm: t("flash.delete_confirm") }, class: "text-red-700 font-bold py-2 px-4 rounded cursor-pointer" do %>
           <%= t("helpers.submit.delete") %>
         <% end %>
-        <%= f.submit t("helpers.submit.update"), class: "bg-black text-white font-bold py-2 px-4 rounded text-center cursor-pointer", required: true, maxlength: 160 %>
+        <%= f.submit t("helpers.submit.update"), class: "bg-black text-white font-bold py-2 px-4 rounded text-center cursor-pointer" %>
       </div>
     <% end %>
   </div>

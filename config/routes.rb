@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   resource :signout, only: %i[create]
   resource :terms, only: %i[show]
 
-  resources :categories, only: %i[show]
+  resources :categories, only: %i[show] do
+    collection do
+      get :edit
+      patch :update
+    end
+  end
   resources :keywords, only: %i[show]
   resources :users, only: %i[show destroy]
   resources :pages, only: %i[index show new create edit update destroy] do

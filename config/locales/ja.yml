@@ -186,6 +186,7 @@ ja:
       new_posts: 新着ポスト
       following_page_posts: フォロー中ページのポスト
       following_pages: フォロー中のページ
+      edit_category: カテゴリを編集
     signin:
       title: ログイン
       submit: ログインする
