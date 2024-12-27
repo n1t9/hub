@@ -1,4 +1,7 @@
 <div class="px-4 py-2 bg-white">
+  <%= link_to root_path, class: "text-sm underline" do %>
+    ←ホームへ戻る
+  <% end %>
   <h2 class="text-xl font-bold my-4">カテゴリ編集</h2>
   <%= form_with url: categories_path, method: :patch, class: "grid grid-cols-1 gap-5" do |f| %>
     <table class="table-auto w-full">
