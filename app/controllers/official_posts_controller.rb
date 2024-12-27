@@ -1,6 +1,11 @@
 class OfficialPostsController < ApplicationController
   def index
-    @official_posts = OfficialPost.order(created_at: :desc).page(params[:page])
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @official_posts = OfficialPost.includes(:categories).where(categories: { id: @category.id }).order(created_at: :desc).page(params[:page]).per(10)
+    else
+      @official_posts = OfficialPost.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   def show

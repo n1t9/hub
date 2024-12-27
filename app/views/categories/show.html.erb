@@ -59,4 +59,24 @@
     </ul>
   </div>
 </div>
+<div class="mt-4 p-4 bg-white">
+  <div class="flex">
+    <h2 class="text-xl font-bold">
+      <%= t("helpers.inclusive_hub_editors") %>
+    </h2>
+    <div class="ml-auto">
+      <%= link_to official_posts_path(category_id: @category.id), class: "block px-2 py-1 border border-gray-500 rounded inline-flex items-center text-sm text-gray-700" do %>
+        <%= t("helpers.see_more") %>
+        <span class="material-icons-outlined text-sm ml-0.5 mt-0.5">
+          arrow_forward_ios
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <ul class="mt-4">
+    <% @official_posts.each do |post| %>
+      <%= render "official_posts/official_post_item", post: post, official_posts: @official_posts %>
+    <% end %>
+  </ul>
+</div>
 <%= render "shared/feedback_white" %>

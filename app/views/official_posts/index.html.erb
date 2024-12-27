@@ -6,14 +6,36 @@
           <%= t('helpers.top') %>
         <% end %>
       </li>
-      <li aria-current="page">
-        <div class="flex items-center">
-          <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-          <span class="ms-1 text-lg font-medium md:ms-2"><%= t("helpers.inclusive_hub_editors") %></span>
-        </div>
-      </li>
+
+      <% if @category %>
+        <li>
+          <div class="flex items-center">
+            <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <%= link_to category_path(@category), class: "ms-1 font-medium md:ms-2 text-sm underline" do %>
+              <%= @category.name %>
+            <% end %>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="ms-1 text-lg font-medium md:ms-2"><%= t("helpers.inclusive_hub_editors") %></span>
+          </div>
+        </li>
+      <% else %>
+        <li>
+          <div class="flex items-center">
+            <svg class="rtl:rotate-180 w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="ms-1 text-lg font-medium md:ms-2"><%= t("helpers.inclusive_hub_editors") %></span>
+          </div>
+        </li>
+      <% end %>
     </ol>
   </nav>
 </div>
