@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_27_004935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
     t.integer "sequence", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_official_posts", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "official_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_categories_official_posts_on_category_id"
+    t.index ["official_post_id"], name: "index_categories_official_posts_on_official_post_id"
   end
 
   create_table "official_post_bookmarks", force: :cascade do |t|
@@ -156,6 +165,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_132242) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "categories_official_posts", "categories"
+  add_foreign_key "categories_official_posts", "official_posts"
   add_foreign_key "official_post_bookmarks", "official_posts"
   add_foreign_key "official_post_bookmarks", "users"
   add_foreign_key "page_followers", "pages"

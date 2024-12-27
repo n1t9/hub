@@ -18,7 +18,16 @@
       <%= f.file_field :cover_image, class: "mt-1 block w-full text-sm cursor-pointer" %>
     </div>
     <div>
-      <%= f.label :content, class: "block tracking-wide text-gray-700 font-bold mb-2" %>
+      <%= f.label :category_ids, "カテゴリ" %><br>
+      <% Category.all.each do |category| %>
+        <div>
+          <%= f.check_box :category_ids, { multiple: true }, category.id, nil %>
+          <%= f.label "category_ids_#{category.id}", category.name %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= f.label :content, class: "block tracking-wide text-gray-700 mb-2" %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.pages.post_content_max", count: 5000) %></span>
       <%= f.text_area :content, class: "w-full rounded border mt-1 p-2", rows: 14, maxlength: 5000, required: true %>
     </div>

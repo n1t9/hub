@@ -35,6 +35,7 @@ class OfficialPostsController < ApplicationController
 
   def update
     return redirect_to root_path unless current_user&.is_admin
+
     @official_post = OfficialPost.find(params[:id])
 
     if @official_post.update(official_post_params)
@@ -58,6 +59,6 @@ class OfficialPostsController < ApplicationController
   private
 
   def official_post_params
-    params.require(:official_post).permit(:title, :cover_image, :content)
+    params.require(:official_post).permit(:title, :cover_image, :content, category_ids: [])
   end
 end

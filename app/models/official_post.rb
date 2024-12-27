@@ -1,6 +1,7 @@
 class OfficialPost < ApplicationRecord
   has_one_attached :cover_image
   has_many :official_post_bookmarks, dependent: :destroy
+  has_and_belongs_to_many :categories
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 5000 }
