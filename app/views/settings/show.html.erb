@@ -11,7 +11,7 @@
       <%= f.text_field :name, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", maxlength: 20, required: true %>
     </div>
     <div>
-      <%= f.label :display_name %>
+      <%= f.label :display_name, t("helpers.setup.display_name") %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
       <%= f.text_field :display_name, class: "block w-full border border-gray-200 rounded px-3 py-2 mt-1 leading-tight", maxlength: 20 %>
     </div>
