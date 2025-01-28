@@ -15,7 +15,7 @@
     <div>
       <%= f.label :profile_image %>
       <span class="text-sm text-gray-500 ml-1"><%= t("helpers.optional") %></span>
-      <%= f.file_field :profile_image, class: "mt-1 block w-full text-sm cursor-pointer" %>
+      <%= f.file_field :profile_image, class: "mt-1 block w-full text-sm cursor-pointer", accept: "image/png, image/jpeg, image/jpg, image/webp, image/avif" %>
     </div>
     <div>
       <%= f.label :background, class: "block" %>

@@ -10,7 +10,7 @@
       </div>
       <div>
         <%= f.label :profile_image, "新しい画像を選択", class: "block text-sm font-medium text-gray-700" %>
-        <%= f.file_field :profile_image, class: "mt-1 block w-full text-sm cursor-pointer" %>
+        <%= f.file_field :profile_image, class: "mt-1 block w-full text-sm cursor-pointer", accept: "image/png, image/jpeg, image/jpg, image/webp, image/avif" %>
       </div>
       <div class="flex justify-end">
         <%= f.submit "更新する", class: "bg-black text-white py-2 px-4 rounded cursor-pointer" %>
