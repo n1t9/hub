@@ -4,6 +4,11 @@
       <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover rounded" %>
     </div>
     <div class="flex gap-2">
+      <% if current_user&.is_admin %>
+        <%= link_to page_managers_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
+          <%= t("helpers.pages.index_managers") %>
+        <% end %>
+      <% end %>
       <% if current_user&.page_manager?(@page) %>
         <%= link_to edit_page_path(@page.id), method: :post, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
           <%= t("helpers.pages.edit") %>

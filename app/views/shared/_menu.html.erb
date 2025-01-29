@@ -32,8 +32,10 @@
             <hr class="my-4">
             <%= link_to t("helpers.bookmarks.title"), bookmarks_path, class: "block text-gray-700 mt-2" %>
             <hr class="my-4">
-            <%= link_to t("helpers.mypages.title"), mypages_path, class: "block text-gray-700 mt-2" %>
-            <hr class="my-4">
+            <% if current_user.pages.present? || current_user.is_admin %>
+              <%= link_to t("helpers.mypages.title"), mypages_path, class: "block text-gray-700 mt-2" %>
+              <hr class="my-4">
+            <% end %>
             <%= link_to t("helpers.setting.title"), settings_path, class: "block text-gray-700 mt-2" %>
             <hr class="my-4">
             <%= link_to t("helpers.company"), "https://the-elements.jp/", target: "_blank", class: "block text-gray-700 mt-2" %>

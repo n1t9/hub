@@ -1,0 +1,38 @@
+<%= content_for :title, t("helpers.pages.edit_managers") %>
+<div class="px-4 py-2 bg-white">
+  <%= link_to page_path(@page), class: "text-sm underline" do %>
+    ←ページへ戻る
+  <% end %>
+  <div class="flex justify-between">
+    <div class="mt-6">
+      <h2 class="text-lg font-bold"><%= t("helpers.pages.index_managers") %></h2>
+      <p class="mt-1 text-sm text-gray-500"><%= t("helpers.pages.manager_description") %></p>
+    </div>
+    <div class="mt-8 flex justify-end">
+      <%= link_to new_page_managers_path(@page), class: "p-3 flex-item text-sm rounded border border-gray-500 cursor-pointer" do %>
+        <%= t("helpers.pages.add_manager") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container mx-auto px-4 pt-3 pb-6 bg-white">
+  <% @users.each do |user| %>
+    <div class="flex items-center border-t border-gray-300 py-3">
+      <div class="flex-1">
+        <div class="flex items-center">
+          <div class="flex-1">
+            <div class="text-lg font-bold"><%= user.display_name %></div>
+            <div class="text-sm text-gray-500"><%= user.email %></div>
+          </div>
+          <% if user != current_user %>
+            <div class="flex-1 text-right">
+              <%= link_to page_managers_path(id: user.id, page_id: @page.id), data: { turbo_method: :delete, turbo_confirm: t("flash.delete_confirm") }, class: "text-red-700 font-bold py-2 px-4 cursor-pointer" do %>
+                <%= t("helpers.submit.delete") %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -229,6 +229,10 @@ ja:
       edit_review: 口コミを編集する
       view_more_reviews: 口コミをもっと見る
       view_more_posts: ポストをもっと見る
+      index_managers: 管理者一覧
+      manager_description: 管理者はページの編集やポストの投稿ができます。
+      edit_managers: 管理者を編集
+      add_manager: 管理者を追加
     page_posts:
       index: ポスト一覧
     page_reviews:
