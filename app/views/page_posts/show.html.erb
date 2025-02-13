@@ -60,7 +60,9 @@
       <% end %>
     </div>
     <div class="mt-6">
-      <div class="break-all leading-8"><%= simple_format(auto_link(@page_post.content, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %></div>
+      <div class="break-all leading-8 whitespace-pre-line post-content">
+        <%= simple_format(auto_link(@page_post.content, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %>
+      </div>
     </div>
   </div>
 </div>

@@ -6,3 +6,14 @@ body {
   @apply bg-lightGray;
   @apply font-sans;
 }
+
+.post-content p {
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+}
+
+.post-content p br {
+  display: block;
+  content: "";
+  height: 0px;
+}
