@@ -20,7 +20,7 @@ class Page < ApplicationRecord
 
   def display_profile_image
     if profile_image.attached?
-      profile_image.representation(resize_to_fill: [ 300, 300 ])
+      profile_image.representation(resize_to_limit: [ 300, 300 ])
     else
       "default_page_profile_image.png"
     end

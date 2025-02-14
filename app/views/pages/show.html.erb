@@ -1,7 +1,7 @@
 <div class="px-4 py-3 bg-white">
   <div class="flex items-center justify-between">
     <div>
-      <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-cover rounded" %>
+      <%= image_tag @page.display_profile_image, class: "w-24 h-24 object-contain rounded" %>
     </div>
     <div class="flex gap-2">
       <% if current_user&.is_admin %>

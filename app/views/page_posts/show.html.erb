@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-screen-sm sm:mt-12 bg-white">
-  <%= image_tag @page_post.display_cover_image, class: "w-full object-cover" %>
+  <%= image_tag @page_post.display_cover_image, class: "w-full object-contain aspect-[1200/628]" %>
   <div class="px-4 py-8">
     <div>
       <h2 class="text-xl sm:text-2xl font-bold flex items-center">
@@ -10,7 +10,7 @@
       <%= link_to page_path(@page_post.page) do %>
         <div class="flex items-center">
           <div class="mr-4">
-            <%= image_tag @page_post.page.display_profile_image, class: "w-10 h-10 object-cover rounded" %>
+            <%= image_tag @page_post.page.display_profile_image, class: "w-10 h-10 object-contain rounded" %>
           </div>
           <div>
             <h5 class="text-lg font-bold tracking-tight"><%= @page_post.page.name %></h5>

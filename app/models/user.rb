@@ -35,14 +35,14 @@ class User < ApplicationRecord
 
   def display_profile_image
     if profile_image.attached?
-      profile_image.representation(resize_to_fill: [ 300, 300 ])
+      profile_image.representation(resize_to_limit: [ 300, 300 ])
     else
       "default_profile_image.png"
     end
   end
 
   def profile_image_resized
-    profile_image.variant(resize_to_fill: [ 64, 64 ]).processed
+    profile_image.variant(resize_to_limit: [ 64, 64 ]).processed
   end
 
   def page_manager?(page)

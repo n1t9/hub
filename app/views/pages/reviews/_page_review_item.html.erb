@@ -2,7 +2,7 @@
   <div class="mt-2 flex text-sm text-gray-700">
     <%= link_to user_path(page_review.user), class: "flex" do %>
       <span>
-        <%= image_tag page_review.user.display_profile_image, class: "w-5 h-5 rounded" %>
+        <%= image_tag page_review.user.display_profile_image, class: "w-5 h-5 object-contain rounded" %>
       </span>
       <span class="ml-2">
         <%= page_review.user.display_name %>

@@ -1,7 +1,7 @@
 <div class="px-4 pt-3 pb-6 bg-white">
   <div class="flex items-center justify-between">
     <div>
-      <%= image_tag @user.display_profile_image, class: "w-24 h-24 object-cover rounded" %>
+      <%= image_tag @user.display_profile_image, class: "w-24 h-24 object-contain rounded" %>
     </div>
     <% if current_user&.id == @user.id %>
       <%= link_to settings_path, class: "p-3 flex-item text-sm rounded border border-gray-500" do %>
