@@ -5,7 +5,7 @@ export class HubStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const imageTag = '2025-02-14-15-09-d6e5c1d';
+    const imageTag = '2025-02-27-18-52-0aeb56b';
 
     const acmArn = 'arn:aws:acm:ap-northeast-1:442426895348:certificate/712c6011-f972-4ccf-8be0-710e4c8cde57';
 
