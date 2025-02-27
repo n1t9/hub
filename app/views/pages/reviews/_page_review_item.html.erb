@@ -13,6 +13,8 @@
     </span>
   </div>
   <div>
-    <p class="mt-2 text-sm break-all"><%= page_review.content %></p>
+    <p class="text-sm break-all whitespace-pre-line">
+      <%= simple_format(auto_link(page_review.content, html: { target: "_blank", rel: "noopener", class: "underline text-blue-500" })) %>
+    </p>
   </div>
 </li>
