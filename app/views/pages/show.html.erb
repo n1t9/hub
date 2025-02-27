@@ -122,7 +122,7 @@
       </h2>
       <div class="ml-auto">
         <% if current_user %>
-          <% if current_user.page_review(@page) %>
+          <% if !current_user.is_admin && current_user.page_review(@page) %>
             <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
               <%= t("helpers.pages.edit_review") %>
             <% end %>
@@ -192,7 +192,7 @@
       </h2>
       <div class="ml-auto">
         <% if current_user %>
-          <% if current_user.page_review(@page) %>
+          <% if !current_user.is_admin && current_user.page_review(@page) %>
             <%= link_to edit_page_review_path(page_id: @page.id, id: current_user.page_review(@page).id), method: :get, class: "px-3 py-2 flex-item text-sm rounded border border-gray-500 block" do %>
               <%= t("helpers.pages.edit_review") %>
             <% end %>
